@@ -28,58 +28,65 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
+    <div className="min-h-screen flex items-center justify-center px-6" style={{ background: '#f9f9f9' }}>
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
-          <div className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#000666] to-[#1a237e]">
             <span className="text-white font-bold text-lg">SC</span>
           </div>
-          <h1 className="text-2xl font-bold text-blue-900">Admin Login</h1>
-          <p className="text-sm text-gray-500 mt-2">Sign in to manage your account</p>
+          <h1 className="font-heading text-2xl font-bold" style={{ color: '#1a1c1c' }}>Admin Login</h1>
+          <p className="text-sm mt-2" style={{ color: '#454652' }}>Sign in to manage your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-5">
+        <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white shadow-[0px_20px_40px_rgba(26,35,126,0.06)] space-y-5">
           {error && (
-            <div className="bg-red-50 text-red-600 text-sm font-medium px-4 py-3 rounded-xl">
+            <div className="text-sm font-medium px-4 py-3 rounded-xl" style={{ background: '#fee2e2', color: '#dc2626' }}>
               {error}
             </div>
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+            <label className="block text-sm font-medium mb-1.5" style={{ color: '#1a1c1c' }}>Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900"
+              className="w-full px-4 py-2.5 rounded-xl text-sm outline-none transition"
+              style={{ background: '#eeeeee', color: '#1a1c1c' }}
+              onFocus={(e) => e.target.style.background = '#ffffff'}
+              onBlur={(e) => e.target.style.background = '#eeeeee'}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+            <label className="block text-sm font-medium mb-1.5" style={{ color: '#1a1c1c' }}>Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900"
+              className="w-full px-4 py-2.5 rounded-xl text-sm outline-none transition"
+              style={{ background: '#eeeeee', color: '#1a1c1c' }}
+              onFocus={(e) => e.target.style.background = '#ffffff'}
+              onBlur={(e) => e.target.style.background = '#eeeeee'}
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-900 text-white font-semibold py-3 rounded-xl hover:bg-blue-800 transition disabled:opacity-50"
+            className="w-full text-white font-semibold py-3 rounded-xl transition disabled:opacity-50"
+            style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-400 mt-8">
-          <Link href="/" className="hover:text-gray-600">Back to home</Link>
+        <p className="text-center text-sm mt-8" style={{ color: '#454652' }}>
+          <Link href="/" className="hover:opacity-70">Back to home</Link>
         </p>
       </div>
     </div>

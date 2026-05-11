@@ -3,20 +3,24 @@ import Link from "next/link";
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-full">
-      {/* Nav */}
-      <header className="border-b border-gray-100">
+      {/* Nav — glassmorphism */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-[24px]">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#000666] to-[#1a237e]">
               <span className="text-white font-bold text-sm">SC</span>
             </div>
-            <span className="font-bold text-lg text-blue-900">SecureCustodian</span>
+            <span className="font-heading font-bold text-lg" style={{ color: '#1a1c1c' }}>SecureCustodian</span>
           </div>
           <nav className="flex items-center gap-6">
-            <Link href="#features" className="text-sm text-gray-600 hover:text-blue-900">Features</Link>
-            <Link href="#how" className="text-sm text-gray-600 hover:text-blue-900">How it works</Link>
-            <Link href="/login" className="text-sm font-medium text-blue-900 hover:text-blue-700">Sign in</Link>
-            <Link href="/login" className="bg-blue-900 text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-blue-800 transition">
+            <Link href="#features" className="text-sm" style={{ color: '#454652' }}>Features</Link>
+            <Link href="#how" className="text-sm" style={{ color: '#454652' }}>How it works</Link>
+            <Link href="/login" className="text-sm font-medium" style={{ color: '#1a237e' }}>Sign in</Link>
+            <Link
+              href="/login"
+              className="text-sm font-semibold px-6 py-2.5 rounded-xl text-white"
+              style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}
+            >
               Get Started
             </Link>
           </nav>
@@ -24,24 +28,32 @@ export default function LandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="flex-1 flex items-center justify-center px-6 py-24">
+      <section className="flex-1 flex items-center justify-center px-6 pt-32 pb-24" style={{ background: '#f9f9f9' }}>
         <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-900 text-xs font-semibold px-4 py-2 rounded-full mb-6">
-            <span className="w-2 h-2 bg-green-500 rounded-full" />
+          <div className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full mb-6" style={{ background: '#eeeeee', color: '#1a237e' }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: '#22c55e' }} />
             Trusted by 500+ stores worldwide
           </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-blue-900 leading-tight mb-6">
+          <h1 className="font-heading text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1a1c1c' }}>
             Store your luggage{'\n'}
-            <span className="text-orange-500">safely, anywhere.</span>
+            <span style={{ color: '#ff6d00' }}>safely, anywhere.</span>
           </h1>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ color: '#454652' }}>
             Find verified stores near you to leave your bags for a few hours or several days. Insured, secure, and affordable.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Link href="/login" className="bg-blue-900 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-800 transition text-base">
+            <Link
+              href="/login"
+              className="font-semibold px-8 py-3.5 rounded-xl text-white text-base"
+              style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}
+            >
               Start Storing
             </Link>
-            <Link href="#how" className="border border-gray-200 text-gray-700 font-semibold px-8 py-3.5 rounded-xl hover:bg-gray-50 transition text-base">
+            <Link
+              href="#how"
+              className="font-semibold px-8 py-3.5 rounded-xl text-base"
+              style={{ background: '#eeeeee', color: '#1a1c1c' }}
+            >
               Learn More
             </Link>
           </div>
@@ -49,13 +61,13 @@ export default function LandingPage() {
       </section>
 
       {/* Features */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-blue-900 text-center mb-4">Why SecureCustodian?</h2>
-          <p className="text-gray-500 text-center mb-16 max-w-lg mx-auto">
+      <section id="features" className="py-24 px-6" style={{ background: '#ffffff' }}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-center mb-4" style={{ color: '#1a1c1c' }}>Why SecureCustodian?</h2>
+          <p className="text-center mb-16 max-w-lg mx-auto" style={{ color: '#454652' }}>
             Everything you need for hassle-free luggage storage.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               { title: 'Insured & Secure', desc: 'Every booking is protected up to $2,500. Your items are safe with us.', icon: '🛡️' },
               { title: 'Real-time Availability', desc: 'See live capacity and book instantly. No waiting for confirmation.', icon: '⚡' },
@@ -64,10 +76,14 @@ export default function LandingPage() {
               { title: 'Easy Check-in/out', desc: 'Show your QR code and you\'re done. No paperwork, no hassle.', icon: '📱' },
               { title: '24/7 Support', desc: 'Our team is always available to help with any issues.', icon: '💬' },
             ].map((f) => (
-              <div key={f.title} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div
+                key={f.title}
+                className="rounded-2xl p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.06)]"
+                style={{ background: '#ffffff' }}
+              >
                 <span className="text-3xl mb-4 block">{f.icon}</span>
-                <h3 className="font-bold text-blue-900 text-lg mb-2">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                <h3 className="font-heading font-bold text-lg mb-2" style={{ color: '#1a1c1c' }}>{f.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#454652' }}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -75,10 +91,10 @@ export default function LandingPage() {
       </section>
 
       {/* How it works */}
-      <section id="how" className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-blue-900 text-center mb-4">How it works</h2>
-          <p className="text-gray-500 text-center mb-16 max-w-lg mx-auto">Three simple steps to store your luggage.</p>
+      <section id="how" className="py-24 px-6" style={{ background: '#f9f9f9' }}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-center mb-4" style={{ color: '#1a1c1c' }}>How it works</h2>
+          <p className="text-center mb-16 max-w-lg mx-auto" style={{ color: '#454652' }}>Three simple steps to store your luggage.</p>
           <div className="grid md:grid-cols-3 gap-12">
             {[
               { step: '01', title: 'Find a store', desc: 'Search for stores near you, check prices and availability.' },
@@ -86,11 +102,14 @@ export default function LandingPage() {
               { step: '03', title: 'Drop & Go', desc: 'Show your QR code at the store. Your luggage is safe.' },
             ].map((s) => (
               <div key={s.step} className="text-center">
-                <div className="w-16 h-16 bg-blue-900 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-6">
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-6 text-white"
+                  style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}
+                >
                   {s.step}
                 </div>
-                <h3 className="font-bold text-blue-900 text-lg mb-2">{s.title}</h3>
-                <p className="text-gray-500 text-sm">{s.desc}</p>
+                <h3 className="font-heading font-bold text-lg mb-2" style={{ color: '#1a1c1c' }}>{s.title}</h3>
+                <p className="text-sm" style={{ color: '#454652' }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -98,24 +117,28 @@ export default function LandingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-blue-900">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to travel light?</h2>
-          <p className="text-blue-200 mb-10 max-w-md mx-auto">Join thousands of travelers who store their luggage with us every day.</p>
-          <Link href="/login" className="bg-orange-500 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-orange-600 transition text-base">
+      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-heading text-3xl font-bold text-white mb-4">Ready to travel light?</h2>
+          <p className="text-white/70 mb-10 max-w-md mx-auto">Join thousands of travelers who store their luggage with us every day.</p>
+          <Link
+            href="/login"
+            className="font-semibold px-8 py-3.5 rounded-xl text-base text-white"
+            style={{ background: '#ff6d00' }}
+          >
             Get Started Now
           </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 py-8">
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between text-sm text-gray-400">
+      <footer className="py-8 px-6" style={{ background: '#ffffff' }}>
+        <div className="max-w-6xl mx-auto flex items-center justify-between text-sm" style={{ color: '#454652' }}>
           <span>© 2026 SecureCustodian. All rights reserved.</span>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-gray-600">Terms</Link>
-            <Link href="#" className="hover:text-gray-600">Privacy</Link>
-            <Link href="/login" className="hover:text-gray-600">Admin</Link>
+            <Link href="#" className="hover:opacity-70">Terms</Link>
+            <Link href="#" className="hover:opacity-70">Privacy</Link>
+            <Link href="/login" className="hover:opacity-70">Admin</Link>
           </div>
         </div>
       </footer>
