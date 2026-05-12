@@ -1,0 +1,15 @@
+export const brand = {
+  primary: '#000666',
+  primaryContainer: '#1a237e',
+  secondary: '#fd6c00',
+  secondaryDark: '#9f4200',
+  surface: '#f9f9f9',
+  surfaceContainer: '#ffffff',
+  surfaceLow: '#f3f3f3',
+  onSurface: '#1a1c1c',
+  onSurfaceVariant: '#454652',
+  success: '#22c55e',
+  error: '#dc2626',
+  shadow: 'rgba(26, 35, 126, 0.06)',
+  gradient: 'linear-gradient(135deg, #000666, #1a237e)',
+} as const;
