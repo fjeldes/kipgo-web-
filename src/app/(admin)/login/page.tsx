@@ -19,6 +19,14 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await login(email, password);
+      const stored = localStorage.getItem('admin_auth');
+      if (stored) {
+        const user = JSON.parse(stored).user;
+        if (user?.mustChangePassword) {
+          router.push('/change-password');
+          return;
+        }
+      }
       router.push('/owner/dashboard');
     } catch (err: any) {
       setError(err.message || 'Invalid credentials');

@@ -14,7 +14,7 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
     if (!isLoading && !user && pathname !== '/login') router.push('/login');
   }, [user, isLoading, pathname, router]);
 
-  if (pathname === '/login') return <>{children}</>;
+  if (pathname === '/login' || pathname === '/change-password') return <>{children}</>;
 
   if (isLoading) return (
     <div className="h-screen flex items-center justify-center bg-[#f9f9f9]">
