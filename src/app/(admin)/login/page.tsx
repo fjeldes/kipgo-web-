@@ -26,6 +26,9 @@ export default function LoginPage() {
           router.push('/change-password');
           return;
         }
+        const isAdmin = user.roles?.includes('admin');
+        router.push(isAdmin ? '/super/payouts' : '/owner/dashboard');
+        return;
       }
       router.push('/owner/dashboard');
     } catch (err: any) {
