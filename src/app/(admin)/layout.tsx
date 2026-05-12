@@ -15,9 +15,10 @@ function AdminSidebar() {
   const isSuper = !user?.roles?.includes('owner');
   const nav = isSuper
     ? [
-        { href: '/super/payouts', label: 'Payouts', icon: DollarSign },
-        { href: '/super/owners', label: 'Owners', icon: Users },
-        { href: '/super/bookings', label: 'Bookings', icon: Briefcase },
+        { href: '/super', label: 'Global Overview', icon: LayoutDashboard },
+        { href: '/super/bookings', label: 'Store Directory', icon: Briefcase },
+        { href: '/super/owners', label: 'User Management', icon: Users },
+        { href: '/super/payouts', label: 'Financials', icon: DollarSign },
       ]
     : [
         { href: '/owner/dashboard', label: 'Dashboard', icon: LayoutDashboard },
