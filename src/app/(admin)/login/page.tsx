@@ -45,12 +45,12 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900 opacity-90" />
         <div className="absolute inset-0 backdrop-blur-[2px]" />
         <div className="relative z-10 flex flex-col justify-between p-16 w-full h-full">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-[#fd6c00] flex items-center justify-center rounded-xl shadow-lg">
-              <span className="material-symbols-outlined text-white text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>inventory_2</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#000666] to-[#1a237e] shadow-lg">
+                <span className="material-symbols-outlined text-white text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
+              </div>
+              <span className="text-white font-headline font-extrabold text-2xl tracking-tight">StashPoint</span>
             </div>
-            <span className="text-white font-headline font-extrabold text-2xl tracking-tight">Central Station Storage</span>
-          </div>
           <div className="max-w-xl">
             <h2 className="text-white text-5xl font-headline font-extrabold leading-tight mb-6">
               Architecting the Future <br/>of Asset Protection.
@@ -70,7 +70,7 @@ export default function LoginPage() {
             </div>
           </div>
           <div className="flex items-center space-x-4 text-white/60 text-sm">
-            <span>© 2026 SecureCustodian Systems.</span>
+            <span>© 2026 StashPoint.</span>
           </div>
         </div>
       </section>

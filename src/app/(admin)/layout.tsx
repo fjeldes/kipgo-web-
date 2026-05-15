@@ -5,25 +5,44 @@ import { usePathname } from "next/navigation";
 import { useAuth, AuthProvider } from "@/hooks/useAuth";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LayoutDashboard, Briefcase, Users, DollarSign, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Briefcase, Users, DollarSign, LogOut, Menu, X, MessageSquareWarning, Bug, Store, UserCog, Calendar, TrendingUp, Globe } from "lucide-react";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { ToastProvider } from "@/components/ui/Toast";
+import { t, detectLang, type Lang } from "@/lib/i18n";
 
 function AdminSidebar() {
   const { user, logout } = useAuth();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>('en');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('admin_lang') as Lang | null;
+    setLang(stored || detectLang());
+  }, []);
+
+  const toggleLang = () => {
+    const next = lang === 'en' ? 'es' : 'en';
+    setLang(next);
+    localStorage.setItem('admin_lang', next);
+  };
 
   const isSuper = !user?.roles?.includes('owner');
   const nav = isSuper
     ? [
-        { href: '/super', label: 'Global Overview', icon: LayoutDashboard },
-        { href: '/super/bookings', label: 'Store Directory', icon: Briefcase },
-        { href: '/super/owners', label: 'User Management', icon: Users },
-        { href: '/super/payouts', label: 'Financials', icon: DollarSign },
+        { href: '/super', label: t('nav.global_overview', lang), icon: LayoutDashboard },
+        { href: '/super/bookings', label: t('nav.store_directory', lang), icon: Briefcase },
+        { href: '/super/owners', label: t('nav.user_management', lang), icon: Users },
+        { href: '/super/payouts', label: t('nav.financials', lang), icon: DollarSign },
+        { href: '/super/claims', label: t('nav.claims', lang), icon: MessageSquareWarning },
+        { href: '/super/errors', label: t('nav.error_logs', lang), icon: Bug },
       ]
     : [
-        { href: '/owner/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-        { href: '/owner/bookings', label: 'Bookings', icon: Briefcase },
-        { href: '/owner/staff', label: 'Staff', icon: Users },
+        { href: '/owner/dashboard', label: t('nav.dashboard', lang), icon: LayoutDashboard },
+        { href: '/owner/stores', label: t('nav.stores', lang), icon: Store },
+        { href: '/owner/bookings', label: t('nav.bookings', lang), icon: Calendar },
+        { href: '/owner/financials', label: t('nav.financials', lang), icon: TrendingUp },
+        { href: '/owner/staff', label: t('nav.staff', lang), icon: UserCog },
       ];
 
   return (
@@ -33,16 +52,19 @@ function AdminSidebar() {
       </button>
 
       <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-white transform transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="h-16 flex items-center gap-2 px-6 border-b border-gray-100">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#000666] to-[#1a237e]">
-            <span className="text-white font-bold text-sm">SC</span>
+        <div className="h-16 flex items-center gap-3 px-6 border-b border-gray-100">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#000666] to-[#1a237e] shadow-md">
+            <span className="material-symbols-outlined text-white text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
           </div>
-          <span className="font-headline font-bold" style={{ color: '#1a1c1c' }}>Admin</span>
+          <div>
+            <span className="font-headline font-bold text-sm block leading-tight" style={{ color: '#1a1c1c' }}>Admin Panel</span>
+            <span className="text-[10px] uppercase tracking-[0.15em] font-bold" style={{ color: '#767683' }}>{t('nav.dashboard', lang)}</span>
+          </div>
         </div>
 
         <nav className="p-3 space-y-1">
           {nav.map((item) => {
-            const active = pathname.startsWith(item.href);
+            const active = item.href === '/super' ? pathname === item.href : pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}
@@ -70,9 +92,13 @@ function AdminSidebar() {
               <p className="text-xs truncate" style={{ color: '#454652' }}>{user?.email}</p>
             </div>
           </div>
+          <button onClick={toggleLang} className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-sm font-medium transition mb-1" style={{ color: '#454652' }}>
+            <Globe size={18} />
+            {lang === 'en' ? t('lang.es', lang) : t('lang.en', lang)}
+          </button>
           <button onClick={logout} className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-sm font-medium transition" style={{ color: '#dc2626' }}>
             <LogOut size={18} />
-            Logout
+            {t('nav.logout', lang)}
           </button>
         </div>
       </aside>
@@ -91,6 +117,12 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
     if (!isLoading && !user && pathname !== '/login' && pathname !== '/change-password') {
       router.push('/login');
     }
+    if (!isLoading && user && pathname.startsWith('/super') && user.roles?.includes('owner')) {
+      router.push('/owner/dashboard');
+    }
+    if (!isLoading && user && pathname.startsWith('/owner') && !user.roles?.includes('owner')) {
+      router.push('/super');
+    }
   }, [user, isLoading, pathname, router]);
 
   if (pathname === '/login' || pathname === '/change-password') return <>{children}</>;
@@ -106,7 +138,14 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
   const isOwnerPage = pathname.startsWith('/owner');
   const isSuperPage = pathname.startsWith('/super');
 
-  if (isOwnerPage) return <>{children}</>;
+  if (isOwnerPage) return (
+    <div className="flex h-screen bg-[#f9f9f9]">
+      <AdminSidebar />
+      <main className="flex-1 lg:ml-64 overflow-auto p-8">
+        {children}
+      </main>
+    </div>
+  );
   if (isSuperPage) return (
     <div className="flex h-screen bg-[#f9f9f9]">
       <AdminSidebar />
@@ -123,7 +162,11 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
-      <AdminLayoutContent>{children}</AdminLayoutContent>
+      <ErrorBoundary>
+        <ToastProvider>
+          <AdminLayoutContent>{children}</AdminLayoutContent>
+        </ToastProvider>
+      </ErrorBoundary>
     </AuthProvider>
   );
 }

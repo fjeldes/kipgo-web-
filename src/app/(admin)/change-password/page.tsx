@@ -9,6 +9,7 @@ import Link from "next/link";
 export default function ChangePasswordPage() {
   const { token, logout } = useAuth();
   const router = useRouter();
+  const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
@@ -17,11 +18,12 @@ export default function ChangePasswordPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
+    if (!currentPassword) { setError('Current password is required'); return; }
     if (newPassword.length < 6) { setError('Password must be at least 6 characters'); return; }
     if (newPassword !== confirm) { setError('Passwords do not match'); return; }
     setLoading(true);
     try {
-      await api.patch('/auth/password', { currentPassword: 'admin123', newPassword }, token || undefined);
+      await api.patch('/auth/password', { currentPassword, newPassword }, token || undefined);
       localStorage.removeItem('admin_auth');
       alert('Password changed successfully. Please login again.');
       router.push('/login');
@@ -42,6 +44,13 @@ export default function ChangePasswordPage() {
 
         <form onSubmit={handleSubmit} className="rounded-2xl p-8 bg-white shadow-[0px_20px_40px_rgba(26,35,126,0.06)] space-y-5">
           {error && <div className="text-sm font-medium px-4 py-3 rounded-xl bg-red-50 text-red-600">{error}</div>}
+
+          <div>
+            <label className="block text-sm font-medium mb-1.5" style={{ color: '#1a1c1c' }}>Current Password</label>
+            <input type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} placeholder="Enter current password" required
+              className="w-full px-4 py-2.5 rounded-xl text-sm outline-none transition" style={{ background: '#eeeeee', color: '#1a1c1c' }}
+              onFocus={(e) => e.target.style.background = '#ffffff'} onBlur={(e) => e.target.style.background = '#eeeeee'} />
+          </div>
 
           <div>
             <label className="block text-sm font-medium mb-1.5" style={{ color: '#1a1c1c' }}>New Password</label>
