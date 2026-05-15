@@ -17,7 +17,7 @@ export default function ContactPage() {
           <div className="bg-white p-6 rounded-2xl shadow-sm">
             <span className="material-symbols-outlined text-2xl mb-3" style={{ color: '#000666' }}>mail</span>
             <p className="font-bold text-sm" style={{ color: '#000666' }}>{t('landing.footer_contact', lang)}</p>
-            <p className="text-sm mt-1" style={{ color: '#454652' }}>hello@stashpoint.app</p>
+            <p className="text-sm mt-1" style={{ color: '#454652' }}>contacto@kipgo.app</p>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm">
             <span className="material-symbols-outlined text-2xl mb-3" style={{ color: '#000666' }}>support_agent</span>

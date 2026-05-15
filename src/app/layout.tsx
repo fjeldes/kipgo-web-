@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
-  title: "StashPoint — Store your luggage safely",
+  title: "KipGo — Store your luggage safely",
   description: "Find nearby stores to store your luggage. Safe, insured, and affordable.",
 };
 

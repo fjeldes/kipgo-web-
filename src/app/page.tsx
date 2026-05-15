@@ -24,15 +24,11 @@ export default function LandingPage() {
       <header className="sticky top-0 w-full z-40 bg-slate-50/80 backdrop-blur-xl shadow-sm">
         <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-3xl font-heading font-black tracking-tighter" style={{ color: '#000666', fontVariationSettings: "'FILL' 1" }}>
-              shield
-            </span>
-            <span className="font-heading font-black tracking-tighter text-2xl" style={{ color: '#000666' }}>StashPoint</span>
+                <img src="/logo.png" alt="Logo" className="h-20 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#how">{t('landing.how_it_works', lang)}</a>
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#safety">{t('landing.safety', lang)}</a>
-            <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#pricing">{t('landing.pricing', lang)}</a>
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#partners">{t('landing.partners', lang)}</a>
           </div>
           <div className="flex items-center gap-2">
@@ -127,13 +123,13 @@ export default function LandingPage() {
                 <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight text-white">{t('landing.security_title', lang)}</h2>
               </div>
               <a href="#safety-features" className="px-8 py-4 bg-white rounded-xl font-bold hover:opacity-90 transition-colors" style={{ color: '#000666' }}>
-                {t('landing.security_certs', lang)}
+                {t('landing.security_title', lang)}
               </a>
             </div>
             <div id="safety-features" className="grid md:grid-cols-3 rounded-[2rem] overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
               {[
-                { icon: 'health_and_safety', title: t('landing.sec1_title', lang), desc: t('landing.sec1_desc', lang) },
-                { icon: 'nest_cam_outdoor', title: t('landing.sec2_title', lang), desc: t('landing.sec2_desc', lang) },
+                { icon: 'lock', title: t('landing.sec1_title', lang), desc: t('landing.sec1_desc', lang) },
+                { icon: 'verified', title: t('landing.sec2_title', lang), desc: t('landing.sec2_desc', lang) },
                 { icon: 'qr_code_scanner', title: t('landing.sec3_title', lang), desc: t('landing.sec3_desc', lang) },
               ].map((s) => (
                 <div key={s.title} className="p-12 flex flex-col items-center text-center" style={{ background: '#1a237e' }}>
@@ -180,20 +176,20 @@ export default function LandingPage() {
 
         {/* Download App Section */}
         <section className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="rounded-[3rem] p-16 text-center text-white" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
-            <span className="material-symbols-outlined text-6xl mb-6" style={{ color: '#8690ee', fontVariationSettings: "'FILL' 1" }}>phone_iphone</span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-4">{t('landing.download_title', lang)}</h2>
-            <p className="text-lg max-w-xl mx-auto mb-10 opacity-80">{t('landing.download_desc', lang)}</p>
+          <div className="rounded-[3rem] p-16 text-center" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
+            <span className="material-symbols-outlined text-6xl mb-6 inline-block" style={{ color: '#8690ee', fontVariationSettings: "'FILL' 1" }}>phone_iphone</span>
+            <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-4 text-white">{t('landing.download_title', lang)}</h2>
+            <p className="text-lg max-w-xl mx-auto mb-10 text-white/80">{t('landing.download_desc', lang)}</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-black font-bold hover:opacity-90 transition-all">
-                <span className="material-symbols-outlined text-2xl">apple</span>
+              <a href="#" className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#000666] font-bold hover:opacity-90 transition-all shadow-lg">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
                 <div className="text-left">
                   <p className="text-[10px] opacity-60 font-normal">{t('landing.download_from', lang)}</p>
                   <p className="text-sm font-bold">App Store</p>
                 </div>
               </a>
-              <a href="#" className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-black font-bold hover:opacity-90 transition-all">
-                <span className="material-symbols-outlined text-2xl">play_store</span>
+              <a href="#" className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#000666] font-bold hover:opacity-90 transition-all shadow-lg">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 0 1 0 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
                 <div className="text-left">
                   <p className="text-[10px] opacity-60 font-normal">{t('landing.download_from', lang)}</p>
                   <p className="text-sm font-bold">Google Play</p>
@@ -209,8 +205,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
             <div className="col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <span className="material-symbols-outlined text-2xl" style={{ color: '#000666', fontVariationSettings: "'FILL' 1" }}>shield</span>
-                <span className="font-heading font-black tracking-tighter text-xl" style={{ color: '#000666' }}>StashPoint</span>
+            <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
               </div>
               <p className="mb-8 max-w-xs leading-relaxed" style={{ color: '#454652' }}>{t('landing.footer_desc', lang)}</p>
               <div className="flex gap-4">
@@ -282,12 +277,12 @@ export default function LandingPage() {
             <h3 className="text-2xl font-headline font-bold mb-2" style={{ color: '#000666' }}>{t('landing.download_title', lang)}</h3>
             <p className="text-sm mb-6" style={{ color: '#454652' }}>{t('landing.download_modal_desc', lang)}</p>
             <div className="flex flex-col gap-3">
-              <a href="#" className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2" style={{ background: '#000666' }}>
-                <span className="material-symbols-outlined">apple</span>
+              <a href="#" className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-3" style={{ background: '#000666' }}>
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
                 App Store
               </a>
-              <a href="#" className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2" style={{ background: '#000666' }}>
-                <span className="material-symbols-outlined">play_store</span>
+              <a href="#" className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-3" style={{ background: '#000666' }}>
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 0 1 0 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
                 Google Play
               </a>
             </div>

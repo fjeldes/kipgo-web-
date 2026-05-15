@@ -53,13 +53,7 @@ function AdminSidebar() {
 
       <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-white transform transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="h-16 flex items-center gap-3 px-6 border-b border-gray-100">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#000666] to-[#1a237e] shadow-md">
-            <span className="material-symbols-outlined text-white text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
-          </div>
-          <div>
-            <span className="font-headline font-bold text-sm block leading-tight" style={{ color: '#1a1c1c' }}>Admin Panel</span>
-            <span className="text-[10px] uppercase tracking-[0.15em] font-bold" style={{ color: '#767683' }}>{t('nav.dashboard', lang)}</span>
-          </div>
+          <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
         </div>
 
         <nav className="p-3 space-y-1">

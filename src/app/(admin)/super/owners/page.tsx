@@ -41,12 +41,12 @@ export default function SuperOwners() {
     [token],
   );
 
-  if (loading) return <LoadingSpinner text="Loading users..." />;
-  if (error) return <ErrorAlert message={error} onRetry={refetch} />;
+  const roleNames = (u: any) => (u.roles || []).map((r: any) => r?.role?.name || r).filter(Boolean);
+  const displayRoles = (u: any) => { const r = roleNames(u); return r.length > 0 ? r : ['client']; };
 
   const filtered = useMemo(() => {
     return (users || []).filter((u: any) => {
-      const roles = (u.roles || []).map((r: any) => r?.role?.name || r);
+      const roles = roleNames(u);
       switch (activeTab) {
         case 'customers': return roles.includes('client') && !roles.includes('staff');
         case 'partners': return roles.includes('owner');
@@ -60,9 +60,6 @@ export default function SuperOwners() {
   const safePage = Math.min(currentPage, totalPages);
   const paginated = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
 
-  const roleNames = (u: any) => (u.roles || []).map((r: any) => r?.role?.name || r).filter(Boolean);
-  const displayRoles = (u: any) => { const r = roleNames(u); return r.length > 0 ? r : ['client']; };
-
   const counts = useMemo(() => {
     const u = users || [];
     return {
@@ -73,8 +70,6 @@ export default function SuperOwners() {
       pending: u.filter((u: any) => !u.isEmailVerified).length,
     };
   }, [users]);
-
-  useEffect(() => { setCurrentPage(1); }, [activeTab]);
 
   const pageNumbers = useMemo(() => {
     const pages: (number | string)[] = [];
@@ -89,6 +84,11 @@ export default function SuperOwners() {
     }
     return pages;
   }, [totalPages, safePage]);
+
+  useEffect(() => { setCurrentPage(1); }, [activeTab]);
+
+  if (loading) return <LoadingSpinner text="Loading..." />;
+  if (error) return <ErrorAlert message={error} onRetry={refetch} />;
 
   return (
     <div>
