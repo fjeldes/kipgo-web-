@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { t, detectLang, type Lang } from "@/lib/i18n";
 
 export default function LandingPage() {
@@ -21,6 +22,19 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-full">
+      <Script id="structured-data" type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "KipGo",
+          url: "https://kipgo.app",
+          description: "Find nearby verified luggage storage locations. Book online, drop off your bags, and explore hands-free.",
+          applicationCategory: "TravelApplication",
+          operatingSystem: "iOS, Android, Web",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          author: { "@type": "Organization", name: "KipGo" },
+        }),
+      }} />
       <header className="sticky top-0 w-full z-40 bg-slate-50/80 backdrop-blur-xl shadow-sm">
         <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
           <div className="flex items-center gap-3">

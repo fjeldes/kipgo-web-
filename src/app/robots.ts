@@ -1,0 +1,14 @@
+import type { MetadataRoute } from "next";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/super/", "/owner/", "/change-password/", "/login/"],
+      },
+    ],
+    sitemap: "https://kipgo.app/sitemap.xml",
+  };
+}
