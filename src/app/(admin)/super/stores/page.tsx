@@ -4,6 +4,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { useAdminApi } from "@/hooks/useAdminApi";
 import { api } from "@/lib/api";
 import { useToast } from "@/components/ui/Toast";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { ErrorAlert } from "@/components/ui/ErrorAlert";
 
@@ -12,6 +14,7 @@ type StoreStatus = 'pending' | 'active' | 'rejected';
 export default function SuperStores() {
   const { token } = useAuth();
   const toast = useToast();
+  const router = useRouter();
 
   const { data: stores, loading, error, refetch } = useAdminApi(
     () => api.get<any[]>('/locations/admin/all', token || undefined).then(r => r || []),
@@ -68,7 +71,7 @@ export default function SuperStores() {
           </div>
           <div className="divide-y" style={{ borderColor: '#f3f3f3' }}>
             {pending.map((store: any) => (
-              <div key={store.id} className="p-6 flex items-center justify-between">
+              <div key={store.id} className="p-6 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => router.push(`/super/stores/${store.id}`)}>
                 <div>
                   <p className="font-bold" style={{ color: '#1a1c1c' }}>{store.name}</p>
                   <p className="text-xs" style={{ color: '#454652' }}>{store.address} • {store.city}</p>
@@ -98,7 +101,7 @@ export default function SuperStores() {
           </div>
           <div className="divide-y" style={{ borderColor: '#f3f3f3' }}>
             {active.map((store: any) => (
-              <div key={store.id} className="p-6 flex items-center justify-between">
+              <div key={store.id} className="p-6 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => router.push(`/super/stores/${store.id}`)}>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-green-500" />
                   <div>
