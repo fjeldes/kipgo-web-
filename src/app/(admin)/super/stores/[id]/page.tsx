@@ -15,7 +15,7 @@ export default function StoreDetail() {
   const toast = useToast();
 
   const { data: store, loading, error, refetch } = useAdminApi(
-    () => api.get<any>(`/locations/${id}`, token || undefined),
+    () => api.get<any>(`/locations/admin/${id}`, token || undefined),
     [id, token],
   );
 
@@ -106,6 +106,25 @@ export default function StoreDetail() {
             <div>
               <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: '#767683' }}>Description</p>
               <p style={{ color: '#454652' }}>{store.description}</p>
+            </div>
+          )}
+
+          {store.owners && store.owners.length > 0 && (
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: '#767683' }}>Store Owner</p>
+              {store.owners.map((owner: any, i: number) => (
+                <div key={i} className="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold" style={{ color: '#1a1c1c' }}>{owner.name}</p>
+                    <p className="text-sm" style={{ color: '#454652' }}>{owner.email}</p>
+                  </div>
+                  {owner.email && (
+                    <a href={`mailto:${owner.email}`} className="px-4 py-2 bg-white rounded-lg text-sm font-bold border hover:bg-gray-100 transition-colors" style={{ color: '#000666', borderColor: '#e2e8f0' }}>
+                      Contact Owner
+                    </a>
+                  )}
+                </div>
+              ))}
             </div>
           )}
         </div>
