@@ -31,6 +31,7 @@ function AdminSidebar() {
   const nav = isSuper
     ? [
         { href: '/super', label: t('nav.global_overview', lang), icon: LayoutDashboard },
+        { href: '/super/stores', label: t('nav.stores', lang), icon: Store },
         { href: '/super/bookings', label: t('nav.store_directory', lang), icon: Briefcase },
         { href: '/super/owners', label: t('nav.user_management', lang), icon: Users },
         { href: '/super/payouts', label: t('nav.financials', lang), icon: DollarSign },
