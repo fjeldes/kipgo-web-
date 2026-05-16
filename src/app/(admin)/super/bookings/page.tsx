@@ -19,16 +19,13 @@ function totalCapacity(cap: any): number {
 export default function SuperBookings() {
   const { token } = useAuth();
   const lang = useLang();
-  const [search, setSearch] = useState('');
 
   const { data: stores, loading, error, refetch } = useAdminApi(
     () => token ? api.get<any[]>('/locations', token).then(r => r || []) : Promise.resolve([]),
     [token],
   );
 
-  if (loading) return <LoadingSpinner text="Loading stores..." />;
-  if (error) return <ErrorAlert message={error} onRetry={refetch} />;
-
+  const [search, setSearch] = useState('');
   const allStores = stores || [];
   const filtered = useMemo(() => {
     if (!search.trim()) return allStores;
@@ -41,6 +38,9 @@ export default function SuperBookings() {
   }, [allStores, search]);
 
   const cities = [...new Set(allStores.map((s: any) => s.city).filter(Boolean))];
+
+  if (loading) return <LoadingSpinner text="Loading stores..." />;
+  if (error) return <ErrorAlert message={error} onRetry={refetch} />;
 
   return (
     <div>
