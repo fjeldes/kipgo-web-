@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useAuth, AuthProvider } from "@/hooks/useAuth";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LayoutDashboard, Briefcase, Users, DollarSign, LogOut, Menu, X, MessageSquareWarning, Bug, Store, UserCog, Calendar, TrendingUp, Globe } from "lucide-react";
+import { LayoutDashboard, Briefcase, Users, DollarSign, LogOut, Menu, X, MessageSquareWarning, Bug, Store, UserCog, Calendar, TrendingUp, Globe, Percent } from "lucide-react";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ToastProvider } from "@/components/ui/Toast";
 import { t, detectLang, type Lang } from "@/lib/i18n";
@@ -35,6 +35,7 @@ function AdminSidebar() {
         { href: '/super/owners', label: t('nav.user_management', lang), icon: Users },
         { href: '/super/payouts', label: t('nav.financials', lang), icon: DollarSign },
         { href: '/super/claims', label: t('nav.claims', lang), icon: MessageSquareWarning },
+        { href: '/super/promos', label: t('nav.promos', lang), icon: Percent },
         { href: '/super/errors', label: t('nav.error_logs', lang), icon: Bug },
       ]
     : [

@@ -54,7 +54,7 @@ export default function SuperBookings() {
           </nav>
           <h2 className="text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('nav.store_directory', lang)}</h2>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button className="flex items-center gap-2 bg-white px-6 py-3 rounded-xl font-bold shadow-sm hover:shadow-md transition-all" style={{ color: '#000666' }}>
             <span className="material-symbols-outlined">filter_list</span>
             {t('store.advanced_filters', lang)}
@@ -110,7 +110,7 @@ export default function SuperBookings() {
         ]).map((store: any, i: number) => {
           const totalSlots = totalCapacity(store.capacity);
           return (
-          <Link key={store.id || i} href={`/super/bookings/${store.id}`} className={`bg-white rounded-2xl p-5 flex items-center gap-8 shadow-[0px_4px_12px_rgba(26,35,126,0.03)] hover:shadow-[0px_12px_24px_rgba(26,35,126,0.06)] transition-all group ${store.featured ? 'border-l-4' : ''}`}
+          <Link key={store.id || i} href={`/super/bookings/${store.id}`} className={`bg-white rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 shadow-[0px_4px_12px_rgba(26,35,126,0.03)] hover:shadow-[0px_12px_24px_rgba(26,35,126,0.06)] transition-all group ${store.featured ? 'border-l-4' : ''}`}
             style={store.featured ? { borderLeftColor: '#fd6c00' } : {}}>
             <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 flex items-center justify-center text-2xl" style={{ background: 'rgba(0,6,102,0.05)' }}>
               🏪
