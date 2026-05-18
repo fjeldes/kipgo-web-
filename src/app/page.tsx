@@ -260,7 +260,7 @@ export default function LandingPage() {
                       {item.onClick ? (
                         <button onClick={item.onClick} className="hover:opacity-70 transition-colors text-left">{item.label}</button>
                       ) : (
-                        <a href={item.href} className="hover:opacity-70 transition-colors">{item.label}</a>
+                        <Link href={item.href} className="hover:opacity-70 transition-colors">{item.label}</Link>
                       )}
                     </li>
                   ))}
