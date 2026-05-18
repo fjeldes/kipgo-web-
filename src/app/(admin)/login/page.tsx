@@ -27,7 +27,7 @@ export default function LoginPage() {
           return;
         }
         const isAdmin = user.roles?.includes('admin');
-        router.push(isAdmin ? '/super/payouts' : '/owner/dashboard');
+        router.push(isAdmin ? '/super' : '/owner/dashboard');
         return;
       }
       router.push('/owner/dashboard');
