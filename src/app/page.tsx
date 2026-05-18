@@ -233,9 +233,6 @@ export default function LandingPage() {
             {[
               { title: t('landing.footer_company', lang), items: [
                 { label: t('landing.footer_about', lang), href: '/about' },
-                { label: t('landing.footer_careers', lang), href: '/' },
-                { label: t('landing.footer_press', lang), href: '/' },
-                { label: t('landing.footer_blog', lang), href: '/' },
               ]},
               { title: t('landing.footer_support', lang), items: [
                 { label: t('landing.footer_help', lang), href: '/contact' },
@@ -247,7 +244,7 @@ export default function LandingPage() {
                 { label: t('landing.footer_privacy', lang), href: '/privacy' },
                 { label: t('landing.footer_terms', lang), href: '/terms' },
                 { label: t('landing.footer_cookies', lang), href: '/privacy' },
-                { label: t('landing.footer_insurance', lang), href: '/' },
+                { label: t('landing.footer_insurance', lang), href: '/terms' },
               ]},
               { title: t('landing.footer_apps', lang), items: [
                 { label: t('landing.footer_ios', lang), href: '#', onClick: () => setShowAppModal(true) },
