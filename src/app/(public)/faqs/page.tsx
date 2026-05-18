@@ -42,7 +42,10 @@ export default function FAQsPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-headline font-extrabold mb-4" style={{ color: '#000666' }}>Preguntas Frecuentes</h1>
+      <div className="flex items-center gap-4 mb-4">
+        <img src="/images/alert.png" alt="" className="w-12 h-12" />
+        <h1 className="text-4xl font-headline font-extrabold" style={{ color: '#000666' }}>Preguntas Frecuentes</h1>
+      </div>
       <p className="text-sm mb-12" style={{ color: '#767683' }}>Encuentra respuestas a las preguntas más comunes sobre KipGo.</p>
 
       <div className="space-y-3">

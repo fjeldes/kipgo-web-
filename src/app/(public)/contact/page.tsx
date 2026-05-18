@@ -9,7 +9,10 @@ export default function ContactPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-headline font-extrabold mb-8" style={{ color: '#000666' }}>{t('landing.footer_contact', lang)}</h1>
+      <div className="flex items-center gap-4 mb-8">
+        <img src="/images/email-pin.png" alt="" className="w-16 h-16" />
+        <h1 className="text-4xl font-headline font-extrabold" style={{ color: '#000666' }}>{t('landing.footer_contact', lang)}</h1>
+      </div>
       <div className="grid gap-6">
         <div className="bg-white rounded-2xl p-8 shadow-sm">
           <h2 className="text-lg font-bold mb-4" style={{ color: '#000666' }}>{t('common.email', lang)}</h2>

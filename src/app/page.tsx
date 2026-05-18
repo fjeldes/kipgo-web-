@@ -95,11 +95,8 @@ export default function LandingPage() {
             </div>
             <div className="relative lg:h-[600px]">
               <div className="absolute inset-0 rounded-[2rem] -rotate-3 translate-x-4" style={{ background: '#e0e0ff' }} />
-              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <div className="text-center p-12">
-                  <span className="text-8xl">👜</span>
-                  <p className="mt-4 text-lg font-semibold" style={{ color: '#000666' }}>{t('landing.secure_storage', lang)}</p>
-                </div>
+              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white p-8">
+                <img src="/images/phone-mockup.png" alt="KipGo app" className="w-full h-full object-contain" />
               </div>
             </div>
           </div>
@@ -132,9 +129,12 @@ export default function LandingPage() {
         <section id="safety" className="py-24 px-6" style={{ background: '#1a237e' }}>
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row items-end justify-between mb-16 gap-8">
-              <div className="max-w-2xl">
-                <span className="font-bold uppercase tracking-[0.2em] text-xs mb-4 block" style={{ color: '#8690ee' }}>{t('landing.security_badge', lang)}</span>
-                <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight text-white">{t('landing.security_title', lang)}</h2>
+              <div className="max-w-2xl flex items-center gap-6">
+                <img src="/images/shield.png" alt="" className="w-20 h-20 md:w-28 md:h-28" />
+                <div>
+                  <span className="font-bold uppercase tracking-[0.2em] text-xs mb-4 block" style={{ color: '#8690ee' }}>{t('landing.security_badge', lang)}</span>
+                  <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight text-white">{t('landing.security_title', lang)}</h2>
+                </div>
               </div>
               <a href="#safety-features" className="px-8 py-4 bg-white rounded-xl font-bold hover:opacity-90 transition-colors" style={{ color: '#000666' }}>
                 {t('landing.security_title', lang)}
