@@ -54,8 +54,10 @@ function AdminSidebar() {
       </button>
 
       <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-white transform transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="h-16 flex items-center gap-3 px-6 border-b border-gray-100">
-          <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
+        <div className="h-16 flex items-center px-6 border-b border-gray-100">
+          <Link href="/" className="flex items-center">
+            <img src="/logo.png" alt="KipGo" className="h-8 w-auto" />
+          </Link>
         </div>
 
         <nav className="p-3 space-y-1">

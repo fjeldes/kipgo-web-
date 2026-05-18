@@ -37,9 +37,9 @@ export default function LandingPage() {
       }} />
       <header className="sticky top-0 w-full z-40 bg-slate-50/80 backdrop-blur-xl shadow-sm">
         <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-          <div className="flex items-center gap-3">
-                <img src="/logo.png" alt="Logo" className="h-20 w-auto" />
-          </div>
+          <Link href="/" className="flex items-center gap-3">
+            <img src="/logo.png" alt="KipGo" className="h-20 w-auto" />
+          </Link>
           <div className="hidden md:flex items-center gap-8">
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#how">{t('landing.how_it_works', lang)}</a>
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#safety">{t('landing.safety', lang)}</a>
@@ -218,9 +218,9 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
             <div className="col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-            <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
-              </div>
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <img src="/logo.png" alt="KipGo" className="h-10 w-auto" />
+            </Link>
               <p className="mb-8 max-w-xs leading-relaxed" style={{ color: '#454652' }}>{t('landing.footer_desc', lang)}</p>
               <div className="flex gap-4">
                 {['public', 'share', 'mail'].map((icon) => (

@@ -51,7 +51,7 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900 opacity-90" />
         <div className="relative z-10 flex flex-col justify-between p-16 w-full h-full">
           <div className="flex items-center justify-between">
-            <img src="/logo.png" alt="Logo" className="h-14 w-auto brightness-0 invert" />
+            <Link href="/"><img src="/logo.png" alt="KipGo" className="h-14 w-auto brightness-0 invert" /></Link>
             <button onClick={() => { const next = lang === 'en' ? 'es' : 'en'; setLang(next); localStorage.setItem('admin_lang', next); }}
               className="px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white border border-white/20 hover:border-white/40 transition-colors">
               {lang === 'en' ? 'ES' : 'EN'}
