@@ -95,8 +95,8 @@ export default function LandingPage() {
             </div>
             <div className="relative lg:h-[600px]">
               <div className="absolute inset-0 rounded-[2rem] -rotate-3 translate-x-4" style={{ background: '#e0e0ff' }} />
-              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white p-8">
-                <img src="/images/phone-mockup.png" alt="KipGo app" className="w-full h-full object-contain" />
+              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white p-12">
+                <img src="/images/shield.png" alt="KipGo" className="w-full h-full object-contain" style={{ maxWidth: 320 }} />
               </div>
             </div>
           </div>
