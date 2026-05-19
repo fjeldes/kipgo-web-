@@ -110,14 +110,12 @@ export default function LandingPage() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { icon: 'location_on', title: t('landing.step1_title', lang), desc: t('landing.step1_desc', lang), iconBg: '#e0e0ff', iconColor: '#000666' },
-                { icon: 'event_available', title: t('landing.step2_title', lang), desc: t('landing.step2_desc', lang), iconBg: '#ffdbcb', iconColor: '#9f4200' },
-                { icon: 'verified_user', title: t('landing.step3_title', lang), desc: t('landing.step3_desc', lang), iconBg: '#e0e0ff', iconColor: '#000666' },
+                { img: '/images/step-1.png', title: t('landing.step1_title', lang), desc: t('landing.step1_desc', lang) },
+                { img: '/images/step-2.png', title: t('landing.step2_title', lang), desc: t('landing.step2_desc', lang) },
+                { img: '/images/step-3.png', title: t('landing.step3_title', lang), desc: t('landing.step3_desc', lang) },
               ].map((s) => (
-                <div key={s.title} className="bg-white p-8 rounded-[2rem] shadow-[0px_20px_40px_rgba(26,35,126,0.06)] transition-transform hover:-translate-y-2">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ background: s.iconBg }}>
-                    <span className="material-symbols-outlined text-3xl" style={{ color: s.iconColor }}>{s.icon}</span>
-                  </div>
+                <div key={s.title} className="bg-white p-8 rounded-[2rem] shadow-[0px_20px_40px_rgba(26,35,126,0.06)] transition-transform hover:-translate-y-2 flex flex-col items-center text-center">
+                  <img src={s.img} alt={s.title} className="w-32 h-32 mb-6 object-contain" />
                   <h3 className="text-xl font-heading font-bold mb-4" style={{ color: '#1a1c1c' }}>{s.title}</h3>
                   <p className="leading-relaxed" style={{ color: '#454652' }}>{s.desc}</p>
                 </div>
