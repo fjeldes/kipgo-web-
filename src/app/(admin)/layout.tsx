@@ -139,7 +139,7 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
   if (isOwnerPage) return (
     <div className="flex h-screen bg-[#f9f9f9]">
       <AdminSidebar />
-      <main className="flex-1 lg:ml-64 overflow-auto p-8">
+      <main className="flex-1 lg:ml-64 overflow-auto p-4 sm:p-8">
         {children}
       </main>
     </div>
@@ -147,7 +147,7 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
   if (isSuperPage) return (
     <div className="flex h-screen bg-[#f9f9f9]">
       <AdminSidebar />
-      <main className="flex-1 lg:ml-64 overflow-auto p-8">
+      <main className="flex-1 lg:ml-64 overflow-auto p-4 sm:p-8">
         {children}
       </main>
     </div>

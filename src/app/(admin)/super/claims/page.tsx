@@ -51,8 +51,8 @@ export default function SuperClaims() {
   return (
     <div>
       {/* Header */}
-      <div className="mb-10">
-        <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#1a1c1c' }}>{t('claim.claims', lang)}</h2>
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#1a1c1c' }}>{t('claim.claims', lang)}</h2>
         <p className="font-medium" style={{ color: '#454652' }}>{t('claim.claims_desc', lang)}</p>
       </div>
 
@@ -88,12 +88,12 @@ export default function SuperClaims() {
           <table className="w-full text-left">
             <thead className="text-[11px] font-black uppercase tracking-[0.1em]" style={{ background: 'rgba(238,238,238,0.5)', color: '#767683' }}>
               <tr>
-                <th className="px-8 py-5">{t('common.subject', lang)}</th>
-                <th className="px-6 py-5">{t('common.name', lang)}</th>
-                <th className="px-6 py-5">{t('common.store', lang)}</th>
-                <th className="px-6 py-5">{t('common.priority', lang)}</th>
-                <th className="px-6 py-5">{t('common.status', lang)}</th>
-                <th className="px-6 py-5">{t('common.date', lang)}</th>
+                <th className="px-3 sm:px-8 py-3 sm:py-5">{t('common.subject', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.name', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.store', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.priority', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.status', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.date', lang)}</th>
               </tr>
             </thead>
             <tbody className="divide-y" style={{ borderColor: 'rgba(198,197,212,0.1)' }}>
@@ -102,30 +102,30 @@ export default function SuperClaims() {
                 const p = PRIORITY_CONFIG[c.priority] || PRIORITY_CONFIG.medium;
                 return (
                   <tr key={c.id} className="hover:opacity-80 transition-opacity">
-                    <td className="px-8 py-5">
+                    <td className="px-3 sm:px-8 py-3 sm:py-5">
                       <p className="font-bold text-sm" style={{ color: '#1a1c1c' }}>{c.subject}</p>
                       {c.description && (
                         <p className="text-xs mt-0.5 line-clamp-1" style={{ color: '#454652' }}>{c.description}</p>
                       )}
                     </td>
-                    <td className="px-6 py-5">
+                    <td className="px-3 sm:px-6 py-3 sm:py-5">
                       <p className="text-sm font-medium" style={{ color: '#1a1c1c' }}>{c.user?.name || 'Unknown'}</p>
                       <p className="text-xs" style={{ color: '#454652' }}>{c.user?.email || ''}</p>
                     </td>
-                    <td className="px-6 py-5 text-sm" style={{ color: '#454652' }}>{c.location || '—'}</td>
-                    <td className="px-6 py-5">
+                    <td className="px-3 sm:px-6 py-3 sm:py-5 text-sm" style={{ color: '#454652' }}>{c.location || '—'}</td>
+                    <td className="px-3 sm:px-6 py-3 sm:py-5">
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold" style={{ background: `${p.color}15`, color: p.color }}>
                         {c.priority === 'urgent' || c.priority === 'high' ? <ArrowUp size={12} /> : <ArrowDown size={12} />}
                         {p.label}
                       </span>
                     </td>
-                    <td className="px-6 py-5">
+                    <td className="px-3 sm:px-6 py-3 sm:py-5">
                       <span className="inline-flex items-center gap-1">
                         <span className="material-symbols-outlined text-[14px]">{s.icon}</span>
                         <StatusBadge status={c.status} />
                       </span>
                     </td>
-                    <td className="px-6 py-5 text-sm" style={{ color: '#454652' }}>
+                    <td className="px-3 sm:px-6 py-3 sm:py-5 text-sm" style={{ color: '#454652' }}>
                       {new Date(c.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </td>
                   </tr>
@@ -133,7 +133,7 @@ export default function SuperClaims() {
               })}
               {claims.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>{t('claim.no_claims', lang)}</td>
+                  <td colSpan={6} className="px-4 sm:px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>{t('claim.no_claims', lang)}</td>
                 </tr>
               )}
             </tbody>
@@ -141,7 +141,7 @@ export default function SuperClaims() {
         </div>
 
         {/* Pagination */}
-        <div className="p-8 flex items-center justify-between border-t" style={{ background: 'rgba(238,238,238,0.3)', borderColor: 'rgba(198,197,212,0.1)' }}>
+        <div className="p-4 sm:p-8 flex items-center justify-between border-t" style={{ background: 'rgba(238,238,238,0.3)', borderColor: 'rgba(198,197,212,0.1)' }}>
           <p className="text-sm font-medium" style={{ color: '#454652' }}>{t('common.page', lang)} {page} {t('common.of', lang)} {totalPages}</p>
           <div className="flex gap-2">
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page <= 1}

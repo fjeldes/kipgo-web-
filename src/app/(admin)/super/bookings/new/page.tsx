@@ -80,12 +80,12 @@ export default function NewStorePage() {
           <ArrowLeft size={20} />
         </Link>
         <div>
-          <h2 className="text-3xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('store.register_new', lang)}</h2>
+          <h2 className="text-2xl sm:text-3xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('store.register_new', lang)}</h2>
           <p className="text-sm mt-1" style={{ color: '#454652' }}>Add a new storage location to the network</p>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-[2rem] p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white rounded-[2rem] p-4 sm:p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] space-y-6">
         {/* Basic Info */}
         <div>
           <h3 className="text-lg font-headline font-bold mb-4" style={{ color: '#000666' }}>Basic Information</h3>

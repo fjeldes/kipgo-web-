@@ -45,21 +45,21 @@ export default function SuperBookings() {
   return (
     <div>
       {/* Header Section */}
-      <div className="flex justify-between items-end mb-10">
+      <div className="flex justify-between items-end mb-6 sm:mb-10">
         <div>
             <nav className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#454652' }}>
             <span>{t('nav.store_directory', lang)}</span>
             <span className="material-symbols-outlined text-xs">chevron_right</span>
             <span style={{ color: '#000666' }}>Storage Partners</span>
           </nav>
-          <h2 className="text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('nav.store_directory', lang)}</h2>
+          <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('nav.store_directory', lang)}</h2>
         </div>
         <div className="flex flex-wrap gap-3">
-          <button className="flex items-center gap-2 bg-white px-6 py-3 rounded-xl font-bold shadow-sm hover:shadow-md transition-all" style={{ color: '#000666' }}>
+          <button className="flex items-center gap-2 bg-white px-4 sm:px-6 py-3 rounded-xl font-bold shadow-sm hover:shadow-md transition-all" style={{ color: '#000666' }}>
             <span className="material-symbols-outlined">filter_list</span>
             {t('store.advanced_filters', lang)}
           </button>
-          <Link href="/super/bookings/new" className="flex items-center gap-2 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:opacity-90 transition-all"
+          <Link href="/super/bookings/new" className="flex items-center gap-2 text-white px-4 sm:px-6 py-3 rounded-xl font-bold shadow-lg hover:opacity-90 transition-all"
             style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
             <span className="material-symbols-outlined">add</span>
             {t('store.register_new', lang)}
@@ -149,7 +149,7 @@ export default function SuperBookings() {
               </div>
             </div>
             <div className="flex-shrink-0 pl-4">
-              <span className="font-bold text-sm px-6 py-3 rounded-xl transition-all duration-300 inline-block" style={{ background: '#eeeeee', color: '#000666' }}>
+              <span className="font-bold text-sm px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 inline-block" style={{ background: '#eeeeee', color: '#000666' }}>
                 {t('common.view_details', lang)}
               </span>
             </div>

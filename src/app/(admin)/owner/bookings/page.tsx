@@ -74,7 +74,7 @@ export default function OwnerBookingsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('nav.bookings', lang)}</h1>
+        <h1 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('nav.bookings', lang)}</h1>
         <p className="font-medium" style={{ color: '#454652' }}>{t('owner.bookings_manage', lang)}</p>
       </div>
 

@@ -85,14 +85,14 @@ export default function OwnerStoreDetail() {
       </nav>
 
       {/* Header */}
-      <div className="flex items-start gap-6 mb-10">
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0" style={{ background: 'rgba(0,6,102,0.05)' }}>🏪</div>
+      <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-10">
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0" style={{ background: 'rgba(0,6,102,0.05)' }}>🏪</div>
         <div className="flex-1">
           {editing ? (
             <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="text-4xl font-headline font-extrabold tracking-tight w-full bg-[#f3f3f3] border-none rounded-xl py-2 px-4 outline-none" style={{ color: '#000666' }} />
+              className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight w-full bg-[#f3f3f3] border-none rounded-xl py-2 px-4 outline-none" style={{ color: '#000666' }} />
           ) : (
-            <h2 className="text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{store.name}</h2>
+            <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{store.name}</h2>
           )}
           <div className="flex items-center gap-4 mt-2">
             <span className="flex items-center gap-1 text-sm" style={{ color: '#454652' }}>
@@ -114,13 +114,13 @@ export default function OwnerStoreDetail() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-10">
         <div className="bg-white p-6 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2 rounded-lg" style={{ background: '#e0e0ff' }}><Package size={18} style={{ color: '#000666' }} /></div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('store.total_capacity', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{totalCap}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{totalCap}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{t('common.slots', lang)}</p>
         </div>
         <div className="bg-white p-6 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
@@ -128,7 +128,7 @@ export default function OwnerStoreDetail() {
             <div className="p-2 rounded-lg" style={{ background: '#ffdbcb' }}><XCircle size={18} style={{ color: '#9f4200' }} /></div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('common.occupied', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#9f4200' }}>{totalOcc}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#9f4200' }}>{totalOcc}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{occPct}% {t('common.of', lang)} {t('common.total', lang)}</p>
         </div>
         <div className="bg-white p-6 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
@@ -136,7 +136,7 @@ export default function OwnerStoreDetail() {
             <div className="p-2 rounded-lg" style={{ background: '#d9e2ff' }}><CheckCircle size={18} style={{ color: '#001944' }} /></div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('common.available', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#001944' }}>{totalAvail}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#001944' }}>{totalAvail}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{100 - occPct}% {t('common.free', lang)}</p>
         </div>
         <div className="bg-white p-6 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
@@ -144,18 +144,18 @@ export default function OwnerStoreDetail() {
             <div className="p-2 rounded-lg" style={{ background: '#e0e0ff' }}><DollarSign size={18} style={{ color: '#000666' }} /></div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('store.price_per_day', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{store.currency || 'USD'} {store.pricePerDay?.small || 0}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{store.currency || 'USD'} {store.pricePerDay?.small || 0}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{t('store.from_small', lang)}</p>
         </div>
       </div>
 
       {/* Capacity */}
       <div className="bg-white rounded-2xl overflow-hidden shadow-[0px_20px_40px_rgba(26,35,126,0.04)] mb-8">
-        <div className="p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
+        <div className="p-4 sm:p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
           <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('store.capacity_breakdown', lang)}</h3>
           <p className="text-sm mt-1" style={{ color: '#454652' }}>{t('store.capacity_by_size', lang)}</p>
         </div>
-        <div className="p-8">
+        <div className="p-4 sm:p-8">
           <div className="space-y-6">
             {sizes.map((size) => {
               const cap = Number(store.capacity?.[size]) || 0;
@@ -183,7 +183,7 @@ export default function OwnerStoreDetail() {
 
       {/* Pricing */}
       <div className="bg-white rounded-2xl overflow-hidden shadow-[0px_20px_40px_rgba(26,35,126,0.04)] mb-8">
-        <div className="p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
+        <div className="p-4 sm:p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
           <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('store.pricing', lang)}</h3>
           <p className="text-sm mt-1" style={{ color: '#454652' }}>{t('store.daily_rates', lang)}</p>
         </div>
@@ -191,21 +191,21 @@ export default function OwnerStoreDetail() {
           <table className="w-full text-left">
             <thead className="text-[10px] uppercase font-extrabold tracking-widest" style={{ background: '#f3f3f3', color: '#454652' }}>
               <tr>
-                <th className="px-8 py-4">{t('common.type', lang)}</th>
-                <th className="px-8 py-4">{t('store.price_per_day', lang)}</th>
-                <th className="px-8 py-4">{t('common.capacity', lang)}</th>
-                <th className="px-8 py-4">{t('common.occupied', lang)}</th>
-                <th className="px-8 py-4">{t('common.available', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.type', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('store.price_per_day', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.capacity', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.occupied', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.available', lang)}</th>
               </tr>
             </thead>
             <tbody className="divide-y" style={{ borderColor: '#f3f3f3' }}>
               {sizes.map((size) => (
                 <tr key={size} className="hover:bg-[#f3f3f3]/30 transition-colors">
-                  <td className="px-8 py-5 font-semibold" style={{ color: '#1a1c1c' }}>{sizeLabels[size]}</td>
-                  <td className="px-8 py-5 font-bold" style={{ color: '#000666' }}>{store.currency || 'USD'} {store.pricePerDay?.[size] || 0}</td>
-                  <td className="px-8 py-5" style={{ color: '#1a1c1c' }}>{store.capacity?.[size] || 0}</td>
-                  <td className="px-8 py-5" style={{ color: '#9f4200' }}>{store.occupied?.[size] || 0}</td>
-                  <td className="px-8 py-5 font-bold" style={{ color: '#001944' }}>{store.availability?.[size] || 0}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 font-semibold" style={{ color: '#1a1c1c' }}>{sizeLabels[size]}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 font-bold" style={{ color: '#000666' }}>{store.currency || 'USD'} {store.pricePerDay?.[size] || 0}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5" style={{ color: '#1a1c1c' }}>{store.capacity?.[size] || 0}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5" style={{ color: '#9f4200' }}>{store.occupied?.[size] || 0}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 font-bold" style={{ color: '#001944' }}>{store.availability?.[size] || 0}</td>
                 </tr>
               ))}
             </tbody>
@@ -215,7 +215,7 @@ export default function OwnerStoreDetail() {
 
       {/* Reviews */}
       <div className="bg-white rounded-2xl overflow-hidden shadow-[0px_20px_40px_rgba(26,35,126,0.04)]">
-        <div className="p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
+        <div className="p-4 sm:p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('store.reviews', lang)}</h3>
@@ -232,7 +232,7 @@ export default function OwnerStoreDetail() {
         </div>
         <div className="divide-y" style={{ borderColor: '#f3f3f3' }}>
           {allReviews.map((r: any) => (
-            <div key={r.id} className="p-8">
+            <div key={r.id} className="p-4 sm:p-8">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
                   {(r.user?.profile?.firstName?.[0] || r.user?.name?.[0] || 'U').toUpperCase()}

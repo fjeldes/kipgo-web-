@@ -40,13 +40,13 @@ export default function OwnerFinancials() {
 
   return (
     <div>
-      <div className="mb-10">
-        <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('finance.financial_overview', lang)}</h2>
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('finance.financial_overview', lang)}</h2>
         <p className="font-medium" style={{ color: '#454652' }}>{t('owner.financial_overview_desc', lang)}</p>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-10">
         <div className="bg-white p-6 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2 rounded-lg" style={{ background: '#e0e0ff' }}>
@@ -54,7 +54,7 @@ export default function OwnerFinancials() {
             </div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('common.revenue', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>${totalRevenue.toFixed(0)}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>${totalRevenue.toFixed(0)}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{completed.length} {t('owner.completed_bookings', lang)}</p>
         </div>
 
@@ -65,7 +65,7 @@ export default function OwnerFinancials() {
             </div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('owner.this_month', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#9f4200' }}>${monthlyRevenue.toFixed(0)}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#9f4200' }}>${monthlyRevenue.toFixed(0)}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{t('owner.earned_this_month', lang)}</p>
         </div>
 
@@ -76,7 +76,7 @@ export default function OwnerFinancials() {
             </div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('finance.pending_revenue', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#001944' }}>${pendingRevenue.toFixed(0)}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#001944' }}>${pendingRevenue.toFixed(0)}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{active.length} {t('owner.active_bookings_count', lang)}</p>
         </div>
 
@@ -87,16 +87,16 @@ export default function OwnerFinancials() {
             </div>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('common.store', lang)}</span>
           </div>
-          <p className="text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{(stores || []).length}</p>
+          <p className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{(stores || []).length}</p>
           <p className="text-xs mt-1" style={{ color: '#454652' }}>{t('owner.locations_count', lang)}</p>
         </div>
       </div>
 
       {/* Recent revenue chart */}
-      <div className="bg-white rounded-2xl p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] mb-8">
+      <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] mb-8">
         <h3 className="text-xl font-headline font-bold mb-2" style={{ color: '#000666' }}>{t('finance.revenue_breakdown', lang)}</h3>
         <p className="text-sm mb-6" style={{ color: '#454652' }}>{t('owner.completed_vs_pending', lang)}</p>
-        <div className="flex items-end gap-6 h-48">
+        <div className="flex items-end gap-3 sm:gap-6 h-48">
           <div className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
             <div className="w-full rounded-t-xl transition-all" style={{ height: `${Math.min((totalRevenue / Math.max(totalRevenue || 1, pendingRevenue || 1)) * 80, 80)}%`, background: 'linear-gradient(135deg, #000666, #1a237e)' }} />
             <span className="text-[10px] font-bold uppercase" style={{ color: '#454652' }}>{t('finance.earned', lang)}</span>
@@ -110,7 +110,7 @@ export default function OwnerFinancials() {
 
       {/* Recent completed bookings */}
       <div className="bg-white rounded-2xl overflow-hidden shadow-[0px_20px_40px_rgba(26,35,126,0.04)]">
-        <div className="p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
+        <div className="p-4 sm:p-8 border-b" style={{ borderColor: '#f3f3f3' }}>
           <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('finance.recent_transactions', lang)}</h3>
           <p className="text-sm mt-1" style={{ color: '#454652' }}>{t('owner.your_transactions', lang)}</p>
         </div>
@@ -121,21 +121,21 @@ export default function OwnerFinancials() {
           <table className="w-full text-left">
             <thead className="text-[10px] uppercase font-extrabold tracking-widest" style={{ background: '#f3f3f3', color: '#454652' }}>
               <tr>
-                <th className="px-8 py-4">{t('common.order', lang)}</th>
-                <th className="px-8 py-4">{t('common.customer', lang)}</th>
-                <th className="px-8 py-4">Items</th>
-                <th className="px-8 py-4">{t('common.date', lang)}</th>
-                <th className="px-8 py-4 text-right">{t('common.amount', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.order', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.customer', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">Items</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.date', lang)}</th>
+                <th className="px-4 sm:px-8 py-4 text-right">{t('common.amount', lang)}</th>
               </tr>
             </thead>
             <tbody className="divide-y" style={{ borderColor: '#f3f3f3' }}>
               {completed.slice(0, 10).map((b: any) => (
                 <tr key={b.id} className="hover:bg-[#f3f3f3]/30 transition-colors">
-                  <td className="px-8 py-5 text-sm font-mono font-bold" style={{ color: '#000666' }}>#{b.id?.slice(0, 8).toUpperCase()}</td>
-                  <td className="px-8 py-5 text-sm font-medium" style={{ color: '#1a1c1c' }}>{b.user?.profile?.firstName || b.user?.name || 'Guest'}</td>
-                  <td className="px-8 py-5 text-sm" style={{ color: '#454652' }}>{b.items ? `${b.items.small || 0}S ${b.items.medium || 0}M ${b.items.large || 0}L` : '—'}</td>
-                  <td className="px-8 py-5 text-sm" style={{ color: '#454652' }}>{b.startDate ? new Date(b.startDate).toLocaleDateString() : '—'}</td>
-                  <td className="px-8 py-5 text-right font-bold" style={{ color: '#000666' }}>${Number(b.totalPrice).toFixed(0)}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 text-sm font-mono font-bold" style={{ color: '#000666' }}>#{b.id?.slice(0, 8).toUpperCase()}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 text-sm font-medium" style={{ color: '#1a1c1c' }}>{b.user?.profile?.firstName || b.user?.name || 'Guest'}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 text-sm" style={{ color: '#454652' }}>{b.items ? `${b.items.small || 0}S ${b.items.medium || 0}M ${b.items.large || 0}L` : '—'}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 text-sm" style={{ color: '#454652' }}>{b.startDate ? new Date(b.startDate).toLocaleDateString() : '—'}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 text-right font-bold" style={{ color: '#000666' }}>${Number(b.totalPrice).toFixed(0)}</td>
                 </tr>
               ))}
             </tbody>

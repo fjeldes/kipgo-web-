@@ -39,12 +39,12 @@ export default function SuperDashboard() {
 
   return (
     <div>
-      <div className="mb-10">
-        <h2 className="text-3xl font-headline font-extrabold tracking-tight mb-1" style={{ color: '#000666' }}>{t('global.system_overview', lang)}</h2>
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-2xl sm:text-3xl font-headline font-extrabold tracking-tight mb-1" style={{ color: '#000666' }}>{t('global.system_overview', lang)}</h2>
         <p className="text-sm" style={{ color: '#454652' }}>{t('global.metrics_desc', lang)}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-10">
         {[
           { icon: DollarSign, bg: '#1a237e', label: t('finance.pending_payouts', lang), value: `$${totalRevenue.toLocaleString()}`, sub: `$${totalRevenue.toLocaleString()} ${t('finance.pending', lang)}` },
           { icon: MapPin, bg: '#fd6c00', label: 'Active Locations', value: activeLocations.toLocaleString(), sub: stores?.length ? '+' + t('common.active', lang) : t('common.no_data', lang) },
@@ -65,8 +65,8 @@ export default function SuperDashboard() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-        <div className="lg:col-span-2 bg-white p-8 rounded-xl shadow-[0px_20px_40px_rgba(26,35,126,0.06)]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-10">
+        <div className="lg:col-span-2 bg-white p-4 sm:p-8 rounded-xl shadow-[0px_20px_40px_rgba(26,35,126,0.06)]">
           <div className="flex justify-between items-center mb-8">
             <div>
               <h4 className="text-lg font-headline font-bold" style={{ color: '#000666' }}>{t('global.revenue_growth', lang)}</h4>
@@ -95,7 +95,7 @@ export default function SuperDashboard() {
           </div>
         </div>
 
-        <div className="bg-white p-8 rounded-xl shadow-[0px_20px_40px_rgba(26,35,126,0.06)] flex flex-col justify-between">
+        <div className="bg-white p-4 sm:p-8 rounded-xl shadow-[0px_20px_40px_rgba(26,35,126,0.06)] flex flex-col justify-between">
           <div>
             <h4 className="text-lg font-headline font-bold mb-2" style={{ color: '#000666' }}>{t('global.live_node_monitor', lang)}</h4>
             <p className="text-xs mb-6 leading-relaxed" style={{ color: '#454652' }}>{t('global.node_monitor_desc', lang)}</p>

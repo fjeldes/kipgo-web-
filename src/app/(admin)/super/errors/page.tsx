@@ -55,8 +55,8 @@ export default function SuperErrorLogs() {
 
   return (
     <div>
-      <div className="mb-10">
-        <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#1a1c1c' }}>{t('error.error_logs', lang)}</h2>
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#1a1c1c' }}>{t('error.error_logs', lang)}</h2>
         <p className="font-medium" style={{ color: '#454652' }}>{t('error.error_logs_desc', lang)}</p>
       </div>
 
@@ -96,7 +96,7 @@ export default function SuperErrorLogs() {
       <div className="bg-white rounded-[2rem] overflow-hidden shadow-[0px_20px_40px_rgba(26,35,126,0.04)]">
         <div className="divide-y" style={{ borderColor: 'rgba(198,197,212,0.1)' }}>
           {logs.map((log: any) => (
-            <div key={log.id} className="px-8 py-5 hover:opacity-80 transition-opacity">
+            <div key={log.id} className="px-3 sm:px-8 py-3 sm:py-5 hover:opacity-80 transition-opacity">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 mt-0.5">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: LEVEL_BG[log.level] || LEVEL_BG.info }}>
@@ -132,7 +132,7 @@ export default function SuperErrorLogs() {
             </div>
           ))}
           {logs.length === 0 && (
-            <div className="px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>{t('error.no_logs', lang)}</div>
+            <div className="px-4 sm:px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>{t('error.no_logs', lang)}</div>
           )}
         </div>
 

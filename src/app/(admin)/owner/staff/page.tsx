@@ -62,13 +62,13 @@ export default function OwnerStaffPage() {
 
   return (
     <div>
-      <div className="flex justify-between items-end mb-10">
+      <div className="flex justify-between items-end mb-6 sm:mb-10">
         <div>
-          <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('nav.staff', lang)}</h2>
+          <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('nav.staff', lang)}</h2>
           <p className="font-medium" style={{ color: '#454652' }}>{t('owner.manage_team', lang)}</p>
         </div>
         <button onClick={() => setShowInvite(true)} disabled={!selectedStore}
-          className="flex items-center gap-2 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:scale-[1.02] transition-all disabled:opacity-50"
+          className="flex items-center gap-2 text-white px-4 sm:px-6 py-3 rounded-xl font-bold shadow-lg hover:scale-[1.02] transition-all disabled:opacity-50"
           style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
           <Plus size={18} />
           {t('staff.invite_member', lang)}
@@ -99,17 +99,17 @@ export default function OwnerStaffPage() {
           <table className="w-full text-left">
             <thead className="text-[11px] font-black uppercase tracking-[0.1em]" style={{ background: 'rgba(238,238,238,0.5)', color: '#767683' }}>
               <tr>
-                <th className="px-8 py-5">{t('common.name', lang)}</th>
-                <th className="px-6 py-5">{t('common.email', lang)}</th>
-                <th className="px-6 py-5">{t('common.permissions', lang)}</th>
-                <th className="px-6 py-5">{t('common.assigned', lang)}</th>
-                <th className="px-8 py-5 text-right">{t('common.actions', lang)}</th>
+                <th className="px-3 sm:px-8 py-3 sm:py-5">{t('common.name', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.email', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.permissions', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.assigned', lang)}</th>
+                <th className="px-3 sm:px-8 py-3 sm:py-5 text-right">{t('common.actions', lang)}</th>
               </tr>
             </thead>
             <tbody className="divide-y" style={{ borderColor: 'rgba(198,197,212,0.1)' }}>
               {(staff || []).map((s: any) => (
                 <tr key={s.id} className="hover:opacity-80 transition-opacity">
-                  <td className="px-8 py-5">
+                  <td className="px-3 sm:px-8 py-3 sm:py-5">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
                         {(s.staff?.profile?.firstName?.[0] || s.staff?.name?.[0] || 'U').toUpperCase()}
@@ -117,16 +117,16 @@ export default function OwnerStaffPage() {
                       <span className="font-bold text-sm" style={{ color: '#1a1c1c' }}>{s.staff?.profile?.firstName || s.staff?.name || 'Staff'}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-5 text-sm" style={{ color: '#454652' }}>{s.staff?.email || '—'}</td>
-                  <td className="px-6 py-5">
+                  <td className="px-3 sm:px-6 py-3 sm:py-5 text-sm" style={{ color: '#454652' }}>{s.staff?.email || '—'}</td>
+                  <td className="px-3 sm:px-6 py-3 sm:py-5">
                     <div className="flex gap-1">
                       {(s.permissions || ['check_in', 'check_out']).map((p: string) => (
                         <span key={p} className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(0,6,102,0.05)', color: '#000666' }}>{p.replace('_', ' ')}</span>
                       ))}
                     </div>
                   </td>
-                  <td className="px-6 py-5 text-xs" style={{ color: '#767683' }}>{s.createdAt ? new Date(s.createdAt).toLocaleDateString() : '—'}</td>
-                  <td className="px-8 py-5 text-right">
+                  <td className="px-3 sm:px-6 py-3 sm:py-5 text-xs" style={{ color: '#767683' }}>{s.createdAt ? new Date(s.createdAt).toLocaleDateString() : '—'}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-5 text-right">
                     <button onClick={() => handleRemove(s.id)} className="p-2 hover:bg-red-50 rounded-lg transition-all" style={{ color: '#dc2626' }}>
                       <X size={16} />
                     </button>
@@ -142,7 +142,7 @@ export default function OwnerStaffPage() {
       {/* Invite modal */}
       {showInvite && (
         <div className="fixed inset-0 bg-black/20 z-50 flex items-center justify-center" onClick={() => setShowInvite(false)}>
-          <div className="bg-white rounded-2xl p-8 w-full max-w-md mx-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white rounded-2xl p-4 sm:p-8 w-full max-w-md mx-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-xl font-headline font-bold mb-1" style={{ color: '#000666' }}>{t('staff.invite_member', lang)}</h3>
             <p className="text-sm mb-6" style={{ color: '#454652' }}>{t('staff.invite_desc', lang)}</p>
 

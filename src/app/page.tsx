@@ -8,6 +8,7 @@ import { t, detectLang, type Lang } from "@/lib/i18n";
 export default function LandingPage() {
   const [lang, setLang] = useState<Lang>('en');
   const [showAppModal, setShowAppModal] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('admin_lang') as Lang | null;
@@ -36,49 +37,74 @@ export default function LandingPage() {
         }),
       }} />
       <header className="sticky top-0 w-full z-40 bg-slate-50/80 backdrop-blur-xl shadow-sm">
-        <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-          <Link href="/" className="flex items-center gap-3">
-            <img src="/logo.png" alt="KipGo" className="h-20 w-auto" />
+        <nav className="flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto">
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <img src="/logo.png" alt="KipGo" className="h-16 sm:h-10 w-auto" />
           </Link>
+
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#how">{t('landing.how_it_works', lang)}</a>
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#safety">{t('landing.safety', lang)}</a>
             <a className="font-body font-medium hover:opacity-70 transition-colors" style={{ color: '#454652' }} href="#partners">{t('landing.partners', lang)}</a>
           </div>
+
           <div className="flex items-center gap-2">
-            <button onClick={toggleLang} className="p-2 rounded-xl hover:bg-slate-100 transition-colors" style={{ color: '#454652' }}>
-              <span className="material-symbols-outlined">language</span>
+            <button onClick={toggleLang} className="hidden sm:flex items-center justify-center rounded-xl hover:bg-slate-100 transition-colors" style={{ color: '#454652', width: '36px', height: '36px' }}>
+              <span className="material-symbols-outlined text-xl">language</span>
             </button>
-            <button onClick={() => setShowAppModal(true)} className="px-5 py-2 font-bold hover:bg-slate-100 rounded-xl transition-colors active:scale-95" style={{ color: '#000666' }}>
-              {t('landing.download_app', lang)}
-            </button>
-            <Link href="/login" className="px-6 py-2.5 rounded-xl font-bold active:scale-95 transition-transform text-white" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
+            <Link href="/login" className="hidden sm:inline-flex items-center px-5 rounded-xl text-sm font-bold active:scale-95 transition-transform text-white" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)', height: '36px' }}>
               {t('landing.login', lang)}
             </Link>
+            {/* Hamburger */}
+            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden flex items-center justify-center rounded-xl hover:bg-slate-100 transition-colors" style={{ width: '36px', height: '36px', color: '#454652' }}>
+              <span className="material-symbols-outlined text-2xl">{menuOpen ? 'close' : 'menu'}</span>
+            </button>
           </div>
         </nav>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-white/95 backdrop-blur-xl border-t px-4 pb-6 pt-4 space-y-3" style={{ borderColor: 'rgba(198,197,212,0.2)' }}>
+            <a href="#how" onClick={() => setMenuOpen(false)} className="block px-4 py-3 rounded-xl font-medium hover:opacity-70 transition-colors" style={{ background: '#f3f3f3', color: '#1a1c1c' }}>{t('landing.how_it_works', lang)}</a>
+            <a href="#safety" onClick={() => setMenuOpen(false)} className="block px-4 py-3 rounded-xl font-medium hover:opacity-70 transition-colors" style={{ background: '#f3f3f3', color: '#1a1c1c' }}>{t('landing.safety', lang)}</a>
+            <a href="#partners" onClick={() => setMenuOpen(false)} className="block px-4 py-3 rounded-xl font-medium hover:opacity-70 transition-colors" style={{ background: '#f3f3f3', color: '#1a1c1c' }}>{t('landing.partners', lang)}</a>
+            <hr style={{ borderColor: 'rgba(198,197,212,0.2)' }} />
+            <div className="flex items-center gap-2 px-1">
+              <button onClick={() => { toggleLang(); setMenuOpen(false); }} className="flex items-center justify-center rounded-xl hover:bg-slate-100 transition-colors" style={{ width: '36px', height: '36px', color: '#454652' }}>
+                <span className="material-symbols-outlined text-xl">language</span>
+              </button>
+              <button onClick={() => { setShowAppModal(true); setMenuOpen(false); }} className="flex-1 py-2.5 rounded-xl font-bold text-sm text-center" style={{ background: '#f3f3f3', color: '#000666' }}>
+                {t('landing.download_app', lang)}
+              </button>
+              <Link href="/login" onClick={() => setMenuOpen(false)} className="flex-1 py-2.5 rounded-xl font-bold text-sm text-center text-white" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
+                {t('landing.login', lang)}
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
 
       <main>
-        <section className="relative overflow-hidden pt-12 pb-24 px-6 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <section className="relative overflow-hidden pt-8 md:pt-12 pb-16 md:pb-24 px-6 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="z-10">
-              <span className="inline-block py-1 px-3 rounded-full text-xs font-bold uppercase tracking-widest mb-6" style={{ background: '#ffdbcb', color: '#341100' }}>
+              <span className="inline-block py-1 px-3 rounded-full text-xs font-bold uppercase tracking-widest mb-4 md:mb-6" style={{ background: '#ffdbcb', color: '#341100' }}>
                 {t('landing.badge', lang)}
               </span>
-              <h1 className="text-6xl md:text-7xl font-heading font-extrabold leading-[1.1] tracking-tight mb-8" style={{ color: '#1a1c1c' }}>
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-heading font-extrabold leading-[1.1] tracking-tight mb-4 md:mb-8" style={{ color: '#1a1c1c' }}>
                 {t('landing.hero_title_1', lang)} <span className="italic" style={{ color: '#000666' }}>{t('landing.hero_title_2', lang)}</span> {t('landing.hero_title_3', lang)}
               </h1>
-              <p className="text-lg max-w-xl mb-10 leading-relaxed" style={{ color: '#454652' }}>
+              <p className="text-base md:text-lg max-w-xl mb-6 md:mb-10 leading-relaxed" style={{ color: '#454652' }}>
                 {t('landing.hero_desc', lang)}
               </p>
-              <div className="flex flex-wrap gap-4">
-                <button onClick={() => setShowAppModal(true)} className="px-8 py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all flex items-center gap-2 text-white" style={{ background: '#fd6c00' }}>
-                  <span className="material-symbols-outlined">search</span>
+              <div className="flex flex-wrap gap-3 md:gap-4">
+                <button onClick={() => setShowAppModal(true)} className="px-5 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:brightness-110 transition-all flex items-center gap-2 text-white" style={{ background: '#fd6c00' }}>
+                  <span className="material-symbols-outlined text-lg md:text-2xl">search</span>
                   {t('landing.find_location', lang)}
                 </button>
-                <a href="#how" className="px-8 py-4 rounded-xl font-bold text-lg hover:opacity-70 transition-colors flex items-center gap-2" style={{ background: '#eeeeee', color: '#000666' }}>
-                  <span className="material-symbols-outlined">play_circle</span>
+                <a href="#how" className="px-5 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:opacity-70 transition-colors flex items-center gap-2" style={{ background: '#eeeeee', color: '#000666' }}>
+                  <span className="material-symbols-outlined text-lg md:text-2xl">play_circle</span>
                   {t('landing.see_how', lang)}
                 </a>
               </div>
@@ -96,25 +122,25 @@ export default function LandingPage() {
             <div className="relative lg:h-[600px]">
               <div className="absolute inset-0 rounded-[2rem] -rotate-3 translate-x-4" style={{ background: '#e0e0ff' }} />
               <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl flex items-center justify-center bg-white p-12">
-                <img src="/images/shield.png" alt="KipGo" className="w-full h-full object-contain" style={{ maxWidth: 320 }} />
+                <img src="/images/hero.png" alt="KipGo" className="w-full h-full object-contain" style={{ maxWidth: 500 }} />
               </div>
             </div>
           </div>
         </section>
 
-        <section id="how" className="py-24 px-6" style={{ background: '#f3f3f3' }}>
+        <section id="how" className="py-16 md:py-24 px-6" style={{ background: '#f3f3f3' }}>
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-heading font-bold mb-4" style={{ color: '#1a1c1c' }}>{t('landing.steps_title', lang)}</h2>
-              <p className="max-w-2xl mx-auto" style={{ color: '#454652' }}>{t('landing.steps_desc', lang)}</p>
+            <div className="text-center mb-10 md:mb-16">
+              <h2 className="text-2xl md:text-4xl font-heading font-bold mb-4" style={{ color: '#1a1c1c' }}>{t('landing.steps_title', lang)}</h2>
+              <p className="max-w-2xl mx-auto text-sm md:text-base" style={{ color: '#454652' }}>{t('landing.steps_desc', lang)}</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-4 md:gap-8">
               {[
                 { img: '/images/step-1.png', title: t('landing.step1_title', lang), desc: t('landing.step1_desc', lang) },
                 { img: '/images/step-2.png', title: t('landing.step2_title', lang), desc: t('landing.step2_desc', lang) },
                 { img: '/images/step-3.png', title: t('landing.step3_title', lang), desc: t('landing.step3_desc', lang) },
               ].map((s) => (
-                <div key={s.title} className="bg-white p-8 rounded-[2rem] shadow-[0px_20px_40px_rgba(26,35,126,0.06)] transition-transform hover:-translate-y-2 flex flex-col items-center text-center">
+                <div key={s.title} className="bg-white p-6 md:p-8 rounded-[2rem] shadow-[0px_20px_40px_rgba(26,35,126,0.06)] transition-transform hover:-translate-y-2 flex flex-col items-center text-center">
                   <img src={s.img} alt={s.title} className="w-32 h-32 mb-6 object-contain" />
                   <h3 className="text-xl font-heading font-bold mb-4" style={{ color: '#1a1c1c' }}>{s.title}</h3>
                   <p className="leading-relaxed" style={{ color: '#454652' }}>{s.desc}</p>
@@ -124,18 +150,18 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="safety" className="py-24 px-6" style={{ background: '#1a237e' }}>
+        <section id="safety" className="py-16 md:py-24 px-6" style={{ background: '#1a237e' }}>
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-end justify-between mb-16 gap-8">
-              <div className="max-w-2xl flex items-center gap-6">
-                <img src="/images/shield.png" alt="" className="w-20 h-20 md:w-28 md:h-28" />
+            <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-10 md:mb-16 gap-6">
+              <div className="flex items-start gap-4 md:gap-6">
+                <img src="/images/shield.png" alt="" className="w-20 h-16 md:w-25 md:h-28 mt-1" />
                 <div>
-                  <span className="font-bold uppercase tracking-[0.2em] text-xs mb-4 block" style={{ color: '#8690ee' }}>{t('landing.security_badge', lang)}</span>
-                  <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight text-white">{t('landing.security_title', lang)}</h2>
+                  <span className="font-bold uppercase tracking-[0.2em] text-xs mb-2 block" style={{ color: '#8690ee' }}>{t('landing.security_badge', lang)}</span>
+                  <h2 className="text-2xl md:text-5xl font-heading font-extrabold leading-tight text-white">{t('landing.security_title', lang)}</h2>
                 </div>
               </div>
-              <a href="#safety-features" className="px-8 py-4 bg-white rounded-xl font-bold hover:opacity-90 transition-colors" style={{ color: '#000666' }}>
-                {t('landing.security_title', lang)}
+              <a href="#safety-features" className="text-sm md:text-base px-6 md:px-8 py-3 md:py-4 bg-white rounded-xl font-bold hover:opacity-90 transition-colors whitespace-nowrap" style={{ color: '#000666' }}>
+                {t('landing.security_certs', lang)}
               </a>
             </div>
             <div id="safety-features" className="grid md:grid-cols-3 rounded-[2rem] overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
@@ -144,21 +170,21 @@ export default function LandingPage() {
                 { icon: 'verified', title: t('landing.sec2_title', lang), desc: t('landing.sec2_desc', lang) },
                 { icon: 'qr_code_scanner', title: t('landing.sec3_title', lang), desc: t('landing.sec3_desc', lang) },
               ].map((s) => (
-                <div key={s.title} className="p-12 flex flex-col items-center text-center" style={{ background: '#1a237e' }}>
-                  <span className="material-symbols-outlined text-6xl mb-8" style={{ color: '#8690ee', fontVariationSettings: "'FILL' 1" }}>{s.icon}</span>
-                  <h3 className="text-2xl font-heading font-bold mb-4 text-white">{s.title}</h3>
-                  <p className="leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>{s.desc}</p>
+                <div key={s.title} className="p-6 md:p-12 flex flex-col items-center text-center">
+                  <span className="material-symbols-outlined text-4xl md:text-6xl mb-4 md:mb-8" style={{ color: '#8690ee', fontVariationSettings: "'FILL' 1" }}>{s.icon}</span>
+                  <h3 className="text-lg md:text-2xl font-heading font-bold mb-3 md:mb-4 text-white">{s.title}</h3>
+                  <p className="text-sm md:text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="partners" className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="bg-white rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-[0px_20px_40px_rgba(26,35,126,0.06)]">
-            <div className="p-12 lg:p-20 lg:w-1/2 flex flex-col justify-center">
-              <h2 className="text-4xl font-heading font-extrabold mb-8 leading-tight" style={{ color: '#1a1c1c' }}>{t('landing.partner_title', lang)}</h2>
-              <ul className="space-y-6 mb-12">
+        <section id="partners" className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+          <div className="bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-[0px_20px_40px_rgba(26,35,126,0.06)]">
+            <div className="p-6 md:p-12 lg:p-20 lg:w-1/2 flex flex-col justify-center">
+              <h2 className="text-2xl md:text-4xl font-heading font-extrabold mb-6 md:mb-8 leading-tight" style={{ color: '#1a1c1c' }}>{t('landing.partner_title', lang)}</h2>
+              <ul className="space-y-4 md:space-y-6 mb-8 md:mb-12">
                 {[
                   { icon: 'payments', title: t('landing.partner1_title', lang), desc: t('landing.partner1_desc', lang) },
                   { icon: 'group', title: t('landing.partner2_title', lang), desc: t('landing.partner2_desc', lang) },
@@ -173,34 +199,30 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <button onClick={() => setShowAppModal(true)} className="px-10 py-5 rounded-2xl font-bold text-xl hover:brightness-110 transition-all self-start active:scale-95 text-white" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
+              <button onClick={() => setShowAppModal(true)} className="px-6 md:px-10 py-3 md:py-5 rounded-2xl font-bold text-base md:text-xl hover:brightness-110 transition-all self-start active:scale-95 text-white" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
                 {t('landing.become_partner', lang)}
               </button>
             </div>
-            <div className="lg:w-1/2 min-h-[400px] bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative">
-              <div className="text-center p-12">
-                <span className="text-8xl">🏪</span>
-                <p className="mt-4 text-lg font-semibold" style={{ color: '#000666' }}>{t('landing.store_extra_income', lang)}</p>
-              </div>
+            <div className="lg:w-1/2 min-h-[300px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden bg-blue-50">
+              <img src="/images/partner-store.jpg" alt="Store" className="w-full h-full object-cover" />
             </div>
           </div>
         </section>
 
         {/* Download App Section */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="rounded-[3rem] p-16 text-center" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
-            <span className="material-symbols-outlined text-6xl mb-6 inline-block" style={{ color: '#8690ee', fontVariationSettings: "'FILL' 1" }}>phone_iphone</span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-4 text-white">{t('landing.download_title', lang)}</h2>
-            <p className="text-lg max-w-xl mx-auto mb-10 text-white/80">{t('landing.download_desc', lang)}</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#000666] font-bold hover:opacity-90 transition-all shadow-lg">
+        <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+          <div className="rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 text-center" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
+            <h2 className="text-2xl md:text-5xl font-headline font-extrabold mb-3 md:mb-4 text-white">{t('landing.download_title', lang)}</h2>
+            <p className="text-sm md:text-lg max-w-xl mx-auto mb-6 md:mb-10 text-white/80">{t('landing.download_desc', lang)}</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
+              <a href="#" className="inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-2xl bg-white text-[#000666] font-bold hover:opacity-90 transition-all shadow-lg">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
                 <div className="text-left">
                   <p className="text-[10px] opacity-60 font-normal">{t('landing.download_from', lang)}</p>
                   <p className="text-sm font-bold">App Store</p>
                 </div>
               </a>
-              <a href="#" className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#000666] font-bold hover:opacity-90 transition-all shadow-lg">
+              <a href="#" className="inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-2xl bg-white text-[#000666] font-bold hover:opacity-90 transition-all shadow-lg">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 0 1 0 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
                 <div className="text-left">
                   <p className="text-[10px] opacity-60 font-normal">{t('landing.download_from', lang)}</p>

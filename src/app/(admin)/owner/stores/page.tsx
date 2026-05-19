@@ -24,8 +24,8 @@ export default function OwnerStores() {
 
   return (
     <div>
-      <div className="mb-10">
-        <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('owner.my_stores', lang)}</h2>
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('owner.my_stores', lang)}</h2>
         <p className="font-medium" style={{ color: '#454652' }}>{t('owner.your_stores', lang)}</p>
       </div>
 

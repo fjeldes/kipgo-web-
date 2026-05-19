@@ -55,15 +55,15 @@ export default function SuperPayouts() {
   return (
     <div>
       {/* Header */}
-      <div className="mb-10">
-        <h2 className="text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('finance.financial_overview', lang)}</h2>
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('finance.financial_overview', lang)}</h2>
         <p className="text-sm mt-2 max-w-2xl" style={{ color: '#454652' }}>
           {t('finance.financial_overview_desc', lang)}
         </p>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-6 mb-12">
         <div className="bg-white p-6 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)] flex flex-col justify-between overflow-hidden relative">
           <div className="absolute top-0 right-0 w-24 h-24 bg-[#000666]/5 rounded-full -mr-8 -mt-8" />
           <div className="relative">
@@ -112,9 +112,9 @@ export default function SuperPayouts() {
       </div>
 
       {/* Chart + Payout Requests */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
         {/* Monthly Revenue Trend */}
-        <div className="lg:col-span-2 bg-white p-8 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
+        <div className="lg:col-span-2 bg-white p-4 sm:p-8 rounded-xl shadow-[0px_10px_20px_rgba(26,35,126,0.02)]">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('finance.monthly_revenue_trend', lang)}</h3>
@@ -146,7 +146,7 @@ export default function SuperPayouts() {
         </div>
 
         {/* Payout Requests */}
-        <div className="bg-[#f3f3f3] p-8 rounded-xl flex flex-col">
+        <div className="bg-[#f3f3f3] p-4 sm:p-8 rounded-xl flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('finance.payout_requests', lang)}</h3>
             <span className="text-[10px] px-2 py-1 rounded-full font-extrabold uppercase bg-[#9f4200]/10 text-[#9f4200]">{(payouts || []).length} {t('common.pending', lang)}</span>
@@ -177,7 +177,7 @@ export default function SuperPayouts() {
 
       {/* Recent Transactions */}
       <div className="mt-12 bg-white rounded-2xl overflow-hidden shadow-[0px_20px_40px_rgba(26,35,126,0.04)]">
-        <div className="p-8 border-b border-[#f3f3f3]">
+        <div className="p-4 sm:p-8 border-b border-[#f3f3f3]">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('finance.recent_transactions', lang)}</h3>
@@ -202,12 +202,12 @@ export default function SuperPayouts() {
           <table className="w-full text-left">
             <thead className="text-[10px] uppercase font-extrabold tracking-widest" style={{ background: '#f3f3f3', color: '#454652' }}>
               <tr>
-                <th className="px-8 py-4">{t('common.transaction', lang)}</th>
-                <th className="px-8 py-4">{t('common.store', lang)}</th>
-                <th className="px-8 py-4">{t('common.amount', lang)}</th>
-                <th className="px-8 py-4">{t('common.fee', lang)}</th>
-                <th className="px-8 py-4">{t('common.status', lang)}</th>
-                <th className="px-8 py-4">{t('common.date', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.transaction', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.store', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.amount', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.fee', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.status', lang)}</th>
+                <th className="px-4 sm:px-8 py-4">{t('common.date', lang)}</th>
               </tr>
             </thead>
             <tbody className="divide-y">
@@ -217,8 +217,8 @@ export default function SuperPayouts() {
                   t.status === 'failed' ? 'bg-red-100 text-red-800' : 'bg-[#d9e2ff] text-[#00429c]';
                 return (
                 <tr key={t.id} className="hover:bg-[#f3f3f3]/30 transition-colors group" style={{ borderColor: '#f3f3f3' }}>
-                  <td className="px-8 py-6 text-sm font-mono font-bold" style={{ color: '#000666' }}>{t.transactionId}</td>
-                  <td className="px-8 py-6">
+                  <td className="px-3 sm:px-8 py-3 sm:py-6 text-sm font-mono font-bold" style={{ color: '#000666' }}>{t.transactionId}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-6">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-[#d9e2ff] flex items-center justify-center">
                         <Briefcase size={16} className="text-[#001944]" />
@@ -226,17 +226,17 @@ export default function SuperPayouts() {
                       <span className="text-sm font-semibold" style={{ color: '#1a1c1c' }}>{t.store}</span>
                     </div>
                   </td>
-                  <td className="px-8 py-6 text-sm font-bold" style={{ color: '#1a1c1c' }}>${Number(t.amount).toFixed(2)}</td>
-                  <td className="px-8 py-6 text-sm" style={{ color: '#454652' }}>${Number(t.fee).toFixed(2)}</td>
-                  <td className="px-8 py-6">
+                  <td className="px-3 sm:px-8 py-3 sm:py-6 text-sm font-bold" style={{ color: '#1a1c1c' }}>${Number(t.amount).toFixed(2)}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-6 text-sm" style={{ color: '#454652' }}>${Number(t.fee).toFixed(2)}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-6">
                     <StatusBadge status={t.status} />
                   </td>
-                  <td className="px-8 py-6 text-sm" style={{ color: '#454652' }}>{new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                  <td className="px-3 sm:px-8 py-3 sm:py-6 text-sm" style={{ color: '#454652' }}>{new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                 </tr>
               )})}
               {txns.items.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>{t('finance.no_transactions', lang)}</td>
+                  <td colSpan={6} className="px-4 sm:px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>{t('finance.no_transactions', lang)}</td>
                 </tr>
               )}
             </tbody>

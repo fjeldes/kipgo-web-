@@ -93,12 +93,12 @@ export default function SuperOwners() {
   return (
     <div>
       {/* Header */}
-      <div className="flex justify-between items-end mb-10">
+      <div className="flex justify-between items-end mb-6 sm:mb-10">
         <div>
-          <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#1a1c1c' }}>{t('user.user_management', lang)}</h2>
+          <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#1a1c1c' }}>{t('user.user_management', lang)}</h2>
           <p className="font-medium" style={{ color: '#454652' }}>{t('user.user_management_desc', lang)}</p>
         </div>
-        <button className="text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:scale-[1.02] transition-transform shadow-[0px_10px_20px_rgba(26,35,126,0.15)]"
+        <button className="text-white px-4 sm:px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:scale-[1.02] transition-transform shadow-[0px_10px_20px_rgba(26,35,126,0.15)]"
           style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
           <span className="material-symbols-outlined text-sm">person_add</span>
           {t('user.invite_new', lang)}
@@ -106,7 +106,7 @@ export default function SuperOwners() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-8 border-b mb-8" style={{ borderColor: 'rgba(198,197,212,0.2)' }}>
+      <div className="flex gap-4 sm:gap-8 border-b mb-8" style={{ borderColor: 'rgba(198,197,212,0.2)' }}>
         {TABS.map(({ key, label }) => {
           const active = activeTab === key;
           return (
@@ -125,11 +125,11 @@ export default function SuperOwners() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="text-[11px] font-black uppercase tracking-[0.1em]" style={{ background: 'rgba(238,238,238,0.5)', color: '#767683' }}>
-                <th className="px-8 py-5">{t('user.user_details', lang)}</th>
-                <th className="px-6 py-5">{t('common.role', lang)} / {t('common.permissions', lang)}</th>
-                <th className="px-6 py-5">{t('user.joined_date', lang)}</th>
-                <th className="px-6 py-5">{t('common.status', lang)}</th>
-                <th className="px-8 py-5 text-right">{t('common.actions', lang)}</th>
+                <th className="px-3 sm:px-8 py-3 sm:py-5">{t('user.user_details', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.role', lang)} / {t('common.permissions', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('user.joined_date', lang)}</th>
+                <th className="px-3 sm:px-6 py-3 sm:py-5">{t('common.status', lang)}</th>
+                <th className="px-3 sm:px-8 py-3 sm:py-5 text-right">{t('common.actions', lang)}</th>
               </tr>
             </thead>
             <tbody className="divide-y" style={{ borderColor: 'rgba(198,197,212,0.1)' }}>
@@ -139,7 +139,7 @@ export default function SuperOwners() {
 
                 return (
                   <tr key={u.id} className="hover:opacity-80 transition-colors group">
-                    <td className="px-8 py-6">
+                    <td className="px-3 sm:px-8 py-3 sm:py-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={{ background: 'linear-gradient(135deg, #000666, #1a237e)' }}>
                           {(u.profile?.firstName?.[0] || u.name?.[0] || 'U').toUpperCase()}
@@ -150,7 +150,7 @@ export default function SuperOwners() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-6">
+                    <td className="px-3 sm:px-6 py-3 sm:py-6">
                       <div className="flex flex-wrap gap-1.5">
                         {roles.map((name: string) => {
                           const r = ROLE_CONFIG[name] || ROLE_CONFIG.client;
@@ -163,10 +163,10 @@ export default function SuperOwners() {
                         })}
                       </div>
                     </td>
-                    <td className="px-6 py-6 text-sm font-medium" style={{ color: '#454652' }}>
+                    <td className="px-3 sm:px-6 py-3 sm:py-6 text-sm font-medium" style={{ color: '#454652' }}>
                       {u.createdAt ? new Date(u.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—'}
                     </td>
-                    <td className="px-6 py-6">
+                    <td className="px-3 sm:px-6 py-3 sm:py-6">
                       <div className={`flex items-center gap-1.5 text-xs font-bold ${isVerified ? 'text-green-700' : ''}`} style={!isVerified ? { color: '#9f4200' } : {}}>
                         <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                           {isVerified ? 'verified' : 'pending'}
@@ -174,7 +174,7 @@ export default function SuperOwners() {
                         {isVerified ? t('common.verified', lang) : t('common.pending', lang)}
                       </div>
                     </td>
-                    <td className="px-8 py-6 text-right">
+                    <td className="px-3 sm:px-8 py-3 sm:py-6 text-right">
                       <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button className="p-2 hover:bg-gray-100 rounded-lg transition-all" style={{ color: '#000666' }}>
                           <span className="material-symbols-outlined text-xl">key</span>
@@ -192,7 +192,7 @@ export default function SuperOwners() {
               })}
               {paginated.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>
+                  <td colSpan={5} className="px-4 sm:px-8 py-16 text-center text-sm" style={{ color: '#454652' }}>
                     {t('common.no_results', lang)}
                   </td>
                 </tr>
@@ -202,7 +202,7 @@ export default function SuperOwners() {
         </div>
 
         {/* Pagination */}
-        <div className="p-8 flex items-center justify-between border-t" style={{ background: 'rgba(238,238,238,0.3)', borderColor: 'rgba(198,197,212,0.1)' }}>
+        <div className="p-4 sm:p-8 flex items-center justify-between border-t" style={{ background: 'rgba(238,238,238,0.3)', borderColor: 'rgba(198,197,212,0.1)' }}>
           <p className="text-sm font-medium" style={{ color: '#454652' }}>
             {t('common.showing', lang)} {filtered.length > 0 ? (safePage - 1) * PAGE_SIZE + 1 : 0}-{Math.min(safePage * PAGE_SIZE, filtered.length)} {t('common.of', lang)} {filtered.length} {t(TAB_LABEL[activeTab], lang)}
           </p>
@@ -233,11 +233,11 @@ export default function SuperOwners() {
       </div>
 
       {/* Footer Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-6">
         <div className="p-6 rounded-[2rem] text-white flex items-center justify-between" style={{ background: '#000666' }}>
           <div>
             <p className="text-blue-200 text-xs font-bold uppercase tracking-widest mb-1">{t('user.total_users', lang)}</p>
-            <h4 className="text-3xl font-black font-headline">{counts.total.toLocaleString()}</h4>
+            <h4 className="text-2xl sm:text-3xl font-black font-headline">{counts.total.toLocaleString()}</h4>
           </div>
           <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
             <span className="material-symbols-outlined text-2xl">groups</span>
@@ -246,7 +246,7 @@ export default function SuperOwners() {
         <div className="p-6 rounded-[2rem] border-2 flex items-center justify-between bg-white" style={{ borderColor: 'rgba(0,6,102,0.05)' }}>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('user.awaiting_review', lang)}</p>
-            <h4 className="text-3xl font-black font-headline" style={{ color: '#9f4200' }}>{counts.pending}</h4>
+            <h4 className="text-2xl sm:text-3xl font-black font-headline" style={{ color: '#9f4200' }}>{counts.pending}</h4>
           </div>
           <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'rgba(253,108,0,0.1)', color: '#9f4200' }}>
             <span className="material-symbols-outlined text-2xl">how_to_reg</span>
@@ -255,7 +255,7 @@ export default function SuperOwners() {
         <div className="p-6 rounded-[2rem] border-2 flex items-center justify-between bg-white" style={{ borderColor: 'rgba(0,6,102,0.05)' }}>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#454652' }}>{t('user.growth_mtd', lang)}</p>
-            <h4 className="text-3xl font-black font-headline" style={{ color: '#22c55e' }}>+12.5%</h4>
+            <h4 className="text-2xl sm:text-3xl font-black font-headline" style={{ color: '#22c55e' }}>+12.5%</h4>
           </div>
           <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'rgba(34,197,94,0.1)', color: '#22c55e' }}>
             <span className="material-symbols-outlined text-2xl">trending_up</span>

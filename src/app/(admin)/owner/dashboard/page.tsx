@@ -47,9 +47,9 @@ export default function OwnerDashboard() {
 
   return (
     <div>
-      <div className="flex justify-between items-start mb-10">
+      <div className="flex justify-between items-start mb-6 sm:mb-10">
         <div>
-          <h2 className="text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('owner.performance_hub', lang)}</h2>
+          <h2 className="text-2xl sm:text-4xl font-headline font-extrabold tracking-tight mb-2" style={{ color: '#000666' }}>{t('owner.performance_hub', lang)}</h2>
           <p className="font-medium" style={{ color: '#454652' }}>
             {stores.length > 0 ? stores.length === 1 ? currentStore?.city || '' : `${t('owner.managing_stores', lang)} ${stores.length}` : ''}
           </p>
@@ -83,7 +83,7 @@ export default function OwnerDashboard() {
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-6 mb-8">
         <div className="bg-white rounded-[24px] p-6 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] flex flex-col justify-between h-40">
           <div className="flex justify-between items-start">
             <span className="material-symbols-outlined p-2 rounded-xl" style={{ background: 'rgba(0,6,102,0.05)', color: '#000666' }}>check_circle</span>
@@ -91,7 +91,7 @@ export default function OwnerDashboard() {
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#454652' }}>{t('owner.active_bookings', lang)}</p>
-            <h3 className="text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{activeBookings}</h3>
+            <h3 className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{activeBookings}</h3>
           </div>
         </div>
 
@@ -102,7 +102,7 @@ export default function OwnerDashboard() {
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#454652' }}>{t('owner.incoming_today', lang)}</p>
-            <h3 className="text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{incomingToday}</h3>
+            <h3 className="text-2xl sm:text-3xl font-headline font-extrabold" style={{ color: '#000666' }}>{incomingToday}</h3>
           </div>
         </div>
 
@@ -122,8 +122,8 @@ export default function OwnerDashboard() {
         </div>
       </div>
 
-      <div className="bg-white rounded-[32px] p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] mb-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+      <div className="bg-white rounded-[32px] p-4 sm:p-8 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 sm:mb-10">
           <div>
             <h4 className="text-2xl font-headline font-extrabold tracking-tight" style={{ color: '#000666' }}>{t('owner.revenue_performance', lang)}</h4>
             <p className="text-sm font-medium" style={{ color: '#454652' }}>{selectedStore && currentStore ? currentStore.name : t('owner.revenue_performance_desc', lang)}</p>
@@ -143,7 +143,7 @@ export default function OwnerDashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
         <div className="lg:col-span-2 bg-white rounded-[32px] p-6 shadow-[0px_20px_40px_rgba(26,35,126,0.04)] overflow-hidden">
           <div className="flex justify-between items-center mb-6">
             <h4 className="text-xl font-headline font-bold" style={{ color: '#000666' }}>{t('owner.active_bookings', lang)}</h4>
